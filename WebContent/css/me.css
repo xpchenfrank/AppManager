@@ -1,0 +1,5 @@
+.submenu.current{background:#217dc5; color: #fff;}
+
+#sidebar>ul>li.current>a{color: #fff;}
+
+#header{background:#217dc5; }

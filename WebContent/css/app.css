@@ -1,0 +1,113 @@
+.hide{display: none;}
+
+:focus {
+    outline: none !important;
+}
+
+.login-layout{background: #2274ba url(../img/login-bg.png) 0 0 no-repeat; height: 100%; background-size: 540px 420px; max-width: 900px; margin: 0 auto; min-height: 460px;}
+.logo-area{padding: 80px 0 40px 0;}
+.logo{display: block; margin: 0 auto; width: 300px; height: auto;}
+.input-item,
+.login-btn{display: block; width: 300px; margin: 20px auto; background: #48b2fd; border:0 none; height: 44px; line-height: normal; font-size: 16px; border-radius: 10px; box-sizing:border-box; padding: 10px;}
+.input-item{background: #fff; color: #666; }
+.login-btn{color: #fff;}
+
+    .layout{max-width: 900px; margin: 0 auto; min-height: 600px;}
+    .search-head{height: 50px; line-height: 50px; background: #333; overflow: hidden;}
+    .search-head h4{font-size: 20px; color: #fff; padding-left: 10px; float: left;}
+    .search-area{width: 120px; background: #fff; height: 30px; line-height:30px; border-radius: 12px; padding: 0 10px; padding-right: 30px; position: relative; float: right; margin: 10px;}
+    .search-area input{display: block; height: 100%; width: 100%; border: 0 none; background: none;}
+    .search-ico{display: block; position: absolute; top:4px; width: 20px; height: 20px; right: 10px; background: url(../img/app-search-ico.png) 0 0 no-repeat; background-size: 20px 20px;}
+
+.nav-head{height: 50px; line-height: 50px; color: #fff; background: #2274ba; }
+.nav-head li{float: left; width: 25%; height: 100%; position: relative; text-align:center;}
+.nav-head li a{display: block; width: 100%; color: #fff; font-size: 18px;}
+.nav-corner{display: none; position: absolute; bottom: 0px; left: 50%; margin-left: -6px; width: 12px; height: 6px;
+background: url(../img/app-corner-ico.png) 0 0 no-repeat; background-size: 12px 6px;}
+.nav-head li.current .nav-corner{display: block;}
+
+.banner-img{overflow: hidden; border-bottom: 1px solid #eee; padding-right:5px;}
+.img-item{float: left; width: 33.33%; padding: 10px 0 10px 5px; box-sizing:border-box;}
+.img-item img{display: block; width: 100%; height: auto;}
+
+.app-item{padding: 10px; border-bottom: 1px solid #eee; overflow: hidden; position: relative;}
+.app-img-item{display: block; float: left; width: 60px; height: 60px; border-radius: 6px; margin-right: 10px;}
+.app-intro{float: left; width: 190px;}
+.app-intro .title{font-size: 16px; color: #333;}
+.app-intro .intro{font-size: 14px; color: #666;}
+.app-intro .file-mes{font-size: 12px; color: #999;}
+.down-btn{position: absolute; bottom:10px; top:25px; right: 10px; height: 30px; line-height: 30px; background:#fff; border: 1px solid #ccc; font-size: 14px; color: #333; text-align: center; padding: 0 20px; border-radius: 6px;}
+
+
+html,body{width: 100%; height: 100%;}
+html{ background: #f3f3f3; }
+body{overflow: auto;min-height: 500px; max-width: 900px; margin: 0 auto;}
+.layout{height: 100%; padding-top: 100px; box-sizing:border-box; background: #fff;}
+
+.search-head{margin-top: -100px;}
+
+.app-area{height: 100%; overflow: auto; position: relative;}
+.kinds-area{ height:100%; overflow: auto; position: relative;}
+
+.ka-container{border-bottom: 1px solid #eee; overflow: hidden;}
+.ka-item{float:left; width: 50%; height: 160px; padding:16px 0; box-sizing:border-box;}
+.ka-container .ka-item:first-child{border-right: 1px solid #eee;}
+
+.ka-item .ka-img{width: 100px; height: 100px; display: block; margin: 0 auto;}
+.ka-item .title{font-size: 16px; text-align: center; color: #333; padding-top: 8px;}
+
+/* 下载区域 */
+.down-area{background: #2274ba; position: fixed; padding: 10px; box-sizing:border-box; width: 100%; left: 0; bottom: 0; box-shadow: 0 -4px 10px #ccc;}
+
+.up-down-area{width: 40px; height: 40px; line-height:40px; background: #2274ba; border-radius: 20px; margin-top: -28px; text-align: center;}
+.up-down-area .ud-ico{background: url(../img/app-up-ico.png) 0 0 no-repeat; background-size: 20px 12px; display: inline-block; width:20px; height: 12px;}
+.down-intro-area{position: relative; margin-top: -4px; height: 32px; line-height: 32px;}
+.down-intro-area .intro{font-size: 14px; color: #fff; font-weight: bold;}
+.down-intro-area .down-btn{bottom: auto; top:0; right: 0; color: #ed6206; border: 1px solid #1261a4;}
+
+/* 弹窗 */
+
+  .theme-popover {
+  z-index:9999;
+  position:fixed;
+  top:50%;
+  left:50%;
+  width:90%;
+  margin:-180px 0 0 -45%;
+  border-radius:5px;
+  background-color:#fff;
+  display:none;
+  box-shadow: 0 0 10px #666;
+  padding-bottom: 10px;
+  
+}
+.theme-poptit {
+  border-bottom:1px solid #ddd;
+  padding:12px;
+  position: relative;
+}
+.theme-poptit h2{
+  font-size:15px;
+  text-align:left;
+}
+
+.theme-poptit .close {
+  font-size:20px;
+  float:right;
+  color:#999;
+  margin-top:-4px;
+  text-shadow:0 1px 0 #ddd;
+  text-decoration:none;
+}
+.theme-poptit .close:hover {
+  color:#444;
+}
+
+.baolist {width:90%; margin-left:5%; min-height:100px; max-height:160px; overflow:auto; border-radius:5px; background:#FFF;}
+.baolist li { width:20%; float:left; text-align:center; font-size:12px; line-height:20px; height: auto; margin: 10px 0;}
+.baolist li img { width:90%; border-radius:3px; margin-top:0px;}
+
+.dialog-btn{display: block; width: 90%; margin: 0 auto; background: #2274ba; height: 36px; line-height: 36px; text-align: center; border: 0 none; color: #fff; font-size: 14px;}
+@media screen and (max-width: 340px){
+	.app-intro{float: left; width: 160px;}
+	}

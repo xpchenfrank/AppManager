@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <title>城市生活</title>
+    <meta charset="UTF-8"/>
+
+    <!--search-engine-meta-part-->
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+<!-- 
+<link rel="shortcut icon" href="http://www.mi.com/favicon.ico" type="image/x-icon">
+<link rel="icon" href="http://www.mi.com/favicon.ico" type="image/x-icon">
+ -->
+
+    <link rel="stylesheet" href="../css/base.css"/>
+
+    <link rel="stylesheet" href="../css/uniform.css" />
+    <link rel="stylesheet" href="../css/select2.css" />
+
+    <link rel="stylesheet" href="../css/app-events-index.css"/>
+    <link rel="stylesheet" href="../css/me.css"/>
+
+</head>
+<body>
+
+<!--Header-part-->
+<div id="header">
+    <h1>
+        <span class="ico-site-logo"></span>
+        <a class="main-title" href="/" target="_blank">城市生活应用管理后台</a>
+    </h1>
+</div>
+<!--close-Header-part-->
+
+<!--top-Header-menu-float-right-->
+
+
+<div id="user-nav-float-right" class="navbar navbar-inverse">
+    <ul class="nav">
+        <li class=""><a title="首页" href="http://dev.xiaomi.com/"> <span
+            class="text">首页</span></a></li>
+            <!-- 
+        <li class=""><a title="文档" href="http://dev.xiaomi.com/doc/"> <span class="text">资料修改</span></a>
+        </li>
+         -->
+        <li class=""><a title="文档" href="http://dev.xiaomi.com/doc/"> <span class="text">退出登陆</span></a>
+        </li>
+        
+    </ul>
+</div>
+
+<!--<div class="widget-title bg_ly app-select-nav-header">-->
+    <!--<h5 class="app-label">我的应用</h5>-->
+    <!--<h5 class="app-title" id="app-title-label"></h5>-->
+<!--</div>-->
+
+<!--sidebar-menu-->
+<div class="clearfix" id="sidebar">
+    <ul>
+        <li class="submenu current" data-href-a-same-qs="app-summary.html">
+            <a class="only-one-level" href="javascript:;">
+                <i class="icon ico-sidebar-summary"></i>
+                <span>应用分类</span>
+            </a>
+        </li>
+        <li class="submenu ">
+            <a href="#">
+                <i class="icon ico-sidebar-user-parti"></i>
+                <span>全部</span>
+                <i class="icon ico-direct-down-arrow"></i>
+            </a>
+            
+        </li>
+        <li class="submenu ">
+            <a href="#">
+                <i class="icon ico-sidebar-channel"></i>
+                <span>社交</span>
+                <i class="icon ico-direct-down-arrow"></i>
+            </a>
+
+
+            
+        </li>
+        <li class="submenu">
+            <a href="#">
+                <i class="icon ico-sidebar-event"></i>
+                <span>工具</span>
+                <i class="icon ico-direct-down-arrow"></i>
+            </a>
+            
+        </li>
+        <li class="submenu ">
+            <a href="#">
+                <i class="icon ico-sidebar-device"></i>
+                <span>视频</span>
+                <i class="icon ico-direct-down-arrow"></i>
+            </a>
+            
+        </li>
+        <li class="submenu ">
+            <a href="#">
+                <i class="icon ico-sidebar-setting"></i>
+                <span>音乐</span>
+                <i class="icon ico-direct-down-arrow"></i>
+            </a>
+            
+        </li>
+        <li class="submenu ">
+            <a href="#">
+                <i class="icon ico-sidebar-test"></i>
+                <span>生活</span>
+                <i class="icon ico-direct-down-arrow"></i>
+            </a>
+            
+        </li>
+
+    </ul>
+</div>
+
+
+
+<div id="content">
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <h5>全部事件</h5>
+                        
+                    </div>
+                    <div class="widget-content">
+                        <!-- <div class="input-append date-area" data-date-format="yyyy-mm-dd" data-date="">
+                            <input class="date-picker date-here" type="text" readonly/>
+                            <span class="add-on">
+                                <i class="ico-calendar"></i>
+                            </span>
+                        </div> -->
+                        <table class="table table-bordered table-striped data-table app-events1-table">
+                            <thead>
+                                <tr>
+                                    <th>分类(category)</th>
+                                    <th>事件(key)</th>
+                                    <th>事件名</th>
+                                    <th>类型</th>
+                                    <th>人数</th>
+                                    <th>次数</th>
+                                    <th>人均次数</th>
+                                    <th style="width: 93px;">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+
+                        <table class="table table-bordered table-striped data-table app-events1-table dataTable no-footer" id="DataTables_Table_0" role="grid">
+                            <thead>
+                                <tr role="row"><th class="sorting ui-state-default sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="分类(category): activate to sort column ascending" aria-sort="ascending" style="width: 476px;"><div class="DataTables_sort_wrapper">分类(category)<span class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n"></span></div></th><th class="sorting ui-state-default" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="事件(key): activate to sort column ascending" style="width: 327px;"><div class="DataTables_sort_wrapper">事件(key)<span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span></div></th><th class="sorting ui-state-default" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="事件名: activate to sort column ascending" style="width: 243px;"><div class="DataTables_sort_wrapper">事件名<span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span></div></th><th class="sorting ui-state-default" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="类型: activate to sort column ascending" style="width: 188px;"><div class="DataTables_sort_wrapper">类型<span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span></div></th><th class="sorting ui-state-default" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="人数: activate to sort column ascending" style="width: 188px;"><div class="DataTables_sort_wrapper">人数<span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span></div></th><th class="sorting ui-state-default" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="次数: activate to sort column ascending" style="width: 188px;"><div class="DataTables_sort_wrapper">次数<span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span></div></th><th class="sorting ui-state-default" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="人均次数: activate to sort column ascending" style="width: 301px;"><div class="DataTables_sort_wrapper">人均次数<span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span></div></th><th style="width: 93px;" class="sorting ui-state-default" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="操作: activate to sort column ascending"><div class="DataTables_sort_wrapper">操作<span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span></div></th></tr>
+                            </thead>
+                            <tbody><tr role="row" class="odd"><td class="sorting_1">test</td><td title="属性.0">属性.0</td><td>test1</td><td>字符串属性</td><td>149,216</td><td>-</td><td>-</td>
+                            <td>
+                            <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+                                <img src="../images/iconfont-xiugai.png"></img>
+                            </a>
+                            
+                            &nbsp;&nbsp;&nbsp;
+                            
+                            <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+                                <img src="../images/iconfont-shanchu.png"></img>
+                            </a>
+                            
+                            &nbsp;&nbsp;&nbsp;
+                            <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+                                <img src="../images/iconfont-chaxuntongji.png"></img>
+                            </a>
+                            
+                            </td></tr><tr role="row" class="even"><td class="sorting_1">test</td><td title="属性.2">属性.2</td><td>-</td><td>字符串属性</td><td>128,387</td><td>-</td><td>-</td><td>
+                             <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+                                <img src="../images/iconfont-xiugai.png"></img>
+                            </a>
+                            
+                            &nbsp;&nbsp;&nbsp;
+                            
+                            <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+                                <img src="../images/iconfont-shanchu.png"></img>
+                            </a>
+                            
+                            &nbsp;&nbsp;&nbsp;
+                            <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+                                <img src="../images/iconfont-chaxuntongji.png"></img>
+                            </a>
+                            </td></tr><tr role="row" class="odd"><td class="sorting_1">test</td><td title="属性.1">属性.1</td><td>-</td><td>字符串属性</td><td>132,083</td><td>-</td><td>-</td><td><a class="event-detail" data-change-event-name="property&amp;test&amp;属性.1">编辑事件名</a>&nbsp;&nbsp;&nbsp;<a class="event-detail" data-href-a-same-qs="app-events-string.html#etype=property&amp;key=test:属性.1">详情</a></td></tr><tr role="row" class="even"><td class="sorting_1">test</td><td title="event.num.1">event.num.1</td><td>ev</td><td>计算</td><td>645</td><td>645</td><td>1</td><td><a class="event-detail" data-change-event-name="count&amp;test&amp;event.num.1">编辑事件名</a>&nbsp;&nbsp;&nbsp;<a class="event-detail" data-href-a-same-qs="app-events-count.html#etype=count&amp;key=test:event.num.1">详情</a></td></tr><tr role="row" class="odd"><td class="sorting_1">test</td><td title="event.num.0">event.num.0</td><td>event_nu0</td><td>计算</td><td>860</td><td>860</td><td>1</td><td><a class="event-detail" data-change-event-name="count&amp;test&amp;event.num.0">编辑事件名</a>&nbsp;&nbsp;&nbsp;<a class="event-detail" data-href-a-same-qs="app-events-count.html#etype=count&amp;key=test:event.num.0">详情</a></td></tr><tr role="row" class="even"><td class="sorting_1">test</td><td title="event.num.2">event.num.2</td><td>test2</td><td>计算</td><td>645</td><td>645</td><td>1</td><td><a class="event-detail" data-change-event-name="count&amp;test&amp;event.num.2">编辑事件名</a>&nbsp;&nbsp;&nbsp;<a class="event-detail" data-href-a-same-qs="app-events-count.html#etype=count&amp;key=test:event.num.2">详情</a></td></tr><tr role="row" class="odd"><td class="sorting_1">test</td><td title="event.1">event.1</td><td>-</td><td>计数</td><td>645</td><td>2,580</td><td>4</td><td><a class="event-detail" data-change-event-name="event&amp;test&amp;event.1">编辑事件名</a>&nbsp;&nbsp;&nbsp;<a class="event-detail" data-href-a-same-qs="app-events-event.html#etype=event&amp;key=test:event.1">详情</a></td></tr><tr role="row" class="even"><td class="sorting_1">test</td><td title="event.2">event.2</td><td>ev</td><td>计数</td><td>645</td><td>3,225</td><td>5</td><td><a class="event-detail" data-change-event-name="event&amp;test&amp;event.2">编辑事件名</a>&nbsp;&nbsp;&nbsp;<a class="event-detail" data-href-a-same-qs="app-events-event.html#etype=event&amp;key=test:event.2">详情</a></td></tr><tr role="row" class="odd"><td class="sorting_1">test</td><td title="event.0">event.0</td><td>tswemfklakmfelmwefm</td><td>计数</td><td>645</td><td>3,870</td><td>6</td><td><a class="event-detail" data-change-event-name="event&amp;test&amp;event.0">编辑事件名</a>&nbsp;&nbsp;&nbsp;<a class="event-detail" data-href-a-same-qs="app-events-event.html#etype=event&amp;key=test:event.0">详情</a></td></tr><tr role="row" class="even"><td class="sorting_1">test</td><td title="property.num.1">property.num.1</td><td>-</td><td>数值属性</td><td>132,083</td><td>-</td><td>-</td><td><a class="event-detail" data-change-event-name="numeric&amp;test&amp;property.num.1">编辑事件名</a>&nbsp;&nbsp;&nbsp;<a class="event-detail" data-href-a-same-qs="app-events-number.html#etype=numeric&amp;key=test:property.num.1">详情</a></td></tr></tbody>
+                        </table>
+
+                        <div class="mistat-table-bottom"><div class="mistat-pagination"><div class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers" id="DataTables_Table_0_paginate"><a class="fg-button ui-button ui-state-default first ui-state-disabled" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" id="DataTables_Table_0_first">第一页</a><a class="fg-button ui-button ui-state-default previous ui-state-disabled" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0" id="DataTables_Table_0_previous">上一页</a><span><a class="fg-button ui-button ui-state-default ui-state-disabled" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0">1</a><a class="fg-button ui-button ui-state-default " aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0">2</a></span><a class="fg-button ui-button ui-state-default next" aria-controls="DataTables_Table_0" data-dt-idx="4" tabindex="0" id="DataTables_Table_0_next">下一页</a><a class="fg-button ui-button ui-state-default last" aria-controls="DataTables_Table_0" data-dt-idx="5" tabindex="0" id="DataTables_Table_0_last">最后一页</a></div></div><div class="mistat-length-changing"><div class="dataTables_length" id="DataTables_Table_0_length"><label>每页最多显示 <div class="select2-container" id="s2id_autogen1"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-2">10</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen2" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-2" id="s2id_autogen2" tabindex="0"><div class="select2-drop select2-display-none">   <div class="select2-search select2-search-hidden select2-offscreen">       <label for="s2id_autogen2_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-2" id="s2id_autogen2_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-2">   </ul></div></div><select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="select2-offscreen" tabindex="-1" title=""><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> 条</label></div></div></div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 编辑事件名的浮层 -->
+<div class="modal fade" id="event-name-edit-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h5 class="modal-title">编辑事件名</h5>
+            </div>
+            <div id="event-name-edit-modal-body" class="modal-body">
+                <!-- modal-body -->
+                <form class="form-horizontal">
+                    <div class="control-group">
+                        <label class="control-label" for="event-name-new">事件名</label>
+                        <div class="controls">
+                            <input type="text" id="event-name-new" placeholder="最长10个汉字或20个英文字母">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls input-tip">
+                            最长10个汉字或20个英文字母
+                        </div>
+                    </div>
+                    <div class="btns-container">
+                        <button type="submit" class="btn btn-save" data-event-name-change-save="true">保存</button>
+                        <button type="submit" class="btn btn-cancel" data-event-name-change-cancel="true">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div><!--modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+</body>
+</html>
+
