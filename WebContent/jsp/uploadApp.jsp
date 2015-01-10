@@ -42,6 +42,8 @@
     <!-- 
     <link rel="stylesheet" href="css/mybase.css"/>
      -->
+     <link rel="stylesheet" href="css/admin.css"/>
+     
     <style>
 	    body 
 	    {
@@ -184,12 +186,16 @@
 				  </div>
 				</div>
 				
+				<div class="row tableLine"></div>
+				
 				<div class="form-group">
 				  <label for="inputEmail3" class="col-sm-2 control-label">应用显示名称:</label>
 				  <div class="col-sm-4">
 				    <input type="text" class="form-control" id="inputPassword3" placeholder="显示名称是会显示在界面上的名字,例如: 微信"/>
 				  </div>
 				</div>
+				
+				<div class="row tableLine"></div>
 				
 				<div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">应用文件名称:</label>
@@ -198,6 +204,8 @@
                   </div>
                 </div>
                 
+                <div class="row tableLine"></div>
+                
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">应用版本:</label>
                   <div class="col-sm-2">
@@ -205,31 +213,46 @@
                   </div>
                 </div>
                 
+                <div class="row tableLine"></div>
+                
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">应用图标:</label>
                   <div class="col-sm-2">
                     <input type="file" class="form-control" id="icon"/ >
                   </div>
                 </div>
-				
-			  <div class="form-group">
-			    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-			    <div class="col-sm-10">
-			      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-			    </div>
-			  </div>
+                
+                <div class="row tableLine"></div>
+                
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">应用文件:</label>
+                  <div class="col-sm-2">
+                    <input type="file" class="form-control" id="icon"/ >
+                  </div>
+                </div>
+                
+                <div class="row tableLine"></div>
+                
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">应用属性:</label>
+                  <div class="col-sm-2">
+					<label class="checkbox-inline">
+					  <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+					</label>
+					<label class="checkbox-inline">
+					  <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+					</label>
+					<label class="checkbox-inline">
+					  <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+					</label>
+                  </div>
+                </div>
+			
+			 <div class="form-group"></div>
+			 
 			  <div class="form-group">
 			    <div class="col-sm-offset-2 col-sm-10">
-			      <div class="checkbox">
-			        <label>
-			          <input type="checkbox"> Remember me
-			        </label>
-			      </div>
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <div class="col-sm-offset-2 col-sm-10">
-			      <button type="submit" class="btn btn-default">Sign in</button>
+			      <button type="submit" class="btn btn-primary">新建应用</button>
 			    </div>
 			  </div>
 		  </form>

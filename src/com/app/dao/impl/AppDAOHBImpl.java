@@ -1,15 +1,14 @@
 package com.app.dao.impl;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.app.dao.AppDAO;
-import com.app.dao.UserDAO;
 import com.app.model.App;
 import com.app.model.Category;
-import com.app.model.User;
 
 public class AppDAOHBImpl extends HibernateDaoSupport implements AppDAO {
 
@@ -18,12 +17,23 @@ public class AppDAOHBImpl extends HibernateDaoSupport implements AppDAO {
 			Set<Category> cats) {
 		
 		App anApp = new App();
-		anApp.setDisplayname("н╒пе");
-		anApp.setFilename("weixin");
-		anApp.setVersion("1.0.0");
+		anApp.setDisplayname(displayName);
+		anApp.setFilename(fileName);
+		anApp.setVersion(version);
 		anApp.setCats(cats);
-		getHibernateTemplate().save(anApp);
 		
+		getHibernateTemplate().saveOrUpdateAll(cats);
+		
+		getHibernateTemplate().saveOrUpdate(anApp);
+		
+	}
+	
+	@Override
+	public void insertApp(App anApp) {
+		
+		getHibernateTemplate().saveOrUpdateAll(anApp.getCats());
+		
+		getHibernateTemplate().saveOrUpdate(anApp);
 	}
 
 	@Override
@@ -34,6 +44,20 @@ public class AppDAOHBImpl extends HibernateDaoSupport implements AppDAO {
 	@Override
 	public void findAllApp() {
 		List<App> rooms = getHibernateTemplate().find("from AM_APP");
+	}
+
+	@Override
+	public Category upsertCat(String catName, Set<App> apps) {
+		Category aCat = new Category();
+		aCat.setName(catName);
+		aCat.setApps(apps);
+		getHibernateTemplate().saveOrUpdate(aCat);
+		return aCat;
+	}
+
+	@Override
+	public Category upsertCat(String catName) {
+		return upsertCat(catName, new HashSet<App>());
 	}
     
 }

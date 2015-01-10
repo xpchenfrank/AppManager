@@ -38,7 +38,7 @@ public class Category {
 	private String name;
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinTable(name = "AM_CAT_APP_XREF", joinColumns = { @JoinColumn(name = "APP_ID") }, inverseJoinColumns = { @JoinColumn(name = "CAT_ID") })
+    @JoinTable(name = "AM_CAT_APP_XREF", joinColumns = { @JoinColumn(name = "CAT_ID") }, inverseJoinColumns = { @JoinColumn(name = "APP_ID") })
 	private Set<App> apps = new HashSet<App>(0); 
 	
 	@Column(name="deleted", columnDefinition="BOOLEAN default false")

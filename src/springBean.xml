@@ -22,6 +22,10 @@
         <property name="hibernateTemplate" ref="hibernateTemplete"></property>
     </bean>
     
+    <bean id="appDAO" class="com.app.dao.impl.AppDAOHBImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplete"></property>
+    </bean>
+    
     <bean id="generalService" class="com.app.service.impl.GeneralServiceHBImpl">
     </bean>
      

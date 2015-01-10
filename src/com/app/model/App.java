@@ -36,7 +36,7 @@ public class App {
 	private String displayname;
 	
 	//filename是后台路径中真正存储的name 例如 weixin_1898.apk
-	@Column(name="filename")
+	@Column(name="filename", unique = true, nullable = false)
 	private String filename;
 	
 	//app的版本号 例如1.8.9.8
@@ -44,7 +44,7 @@ public class App {
 	private String version;
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinTable(name = "AM_CAT_APP_XREF", joinColumns = { @JoinColumn(name = "CAT_ID") }, inverseJoinColumns = { @JoinColumn(name = "APP_ID") })
+    @JoinTable(name = "AM_CAT_APP_XREF", joinColumns = { @JoinColumn(name = "APP_ID") }, inverseJoinColumns = { @JoinColumn(name = "CAT_ID") })
 	private Set<Category> cats = new HashSet<Category>(0); 
 	
 	@Column(name="deleted", columnDefinition="BOOLEAN default false")

@@ -19,8 +19,8 @@ import com.app.model.Category;
 import com.app.service.GeneralService;
 
 @Controller
-@RequestMapping("/app")
-public class AppController {
+@RequestMapping("/init")
+public class InitController {
 
     
     @Autowired
@@ -38,31 +38,36 @@ public class AppController {
     @Autowired
     private GeneralService gService;
     
-    @RequestMapping(value = "/addApp", method = RequestMethod.GET)
-    public String addApp(Model model) {
+    @RequestMapping(value = "/createCat", method = RequestMethod.GET)
+    public String createCategories(Model model) {
         
-    	Category aCat = new Category();
-    	aCat.setName("社交");
+    	Category cat1 = new Category();
+    	cat1.setName("社交");
     	
-    	Set<Category> cats = new HashSet<Category>();
-    	cats.add(aCat);
+    	String[] categories = {"社交", "视频", "阅读", "音乐", "生活", "系统", "安全"};
     	
-    	App app1 = new App();
-    	app1.setDisplayname("微信");
-    	app1.setFilename("weixin_101");
-    	app1.setVersion("1.0.1");
-    	app1.setCats(cats);
+        for(String tempStr : categories) {
+        	Category cat = new Category();
+        	cat.setName(tempStr);
+        	aAppDAO.upsertCat(tempStr);
+        }
     	
-    	App app2 = new App();
-    	app2.setDisplayname("QQ");
-    	app2.setFilename("qq_100");
-    	app2.setVersion("1.0.0");
-    	app2.setCats(cats);
+    	Category cat2 = new Category();
+    	cat2.setName("视频");
     	
-    	gService.insertApp(app1);
-    	gService.insertApp(app2);
+    	Category cat3 = new Category();
+    	cat3.setName("阅读");
+    	
+    	Category cat4 = new Category();
+    	cat4.setName("音乐");
+    	
+    	Category cat5 = new Category();
+    	cat5.setName("生活");
+    	
+    	Category cat6 = new Category();
+    	cat6.setName("系统");
         
-        return "index";
+        return null;
     }
     
     @RequestMapping(value = "/add", method = RequestMethod.GET)

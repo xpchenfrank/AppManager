@@ -5,8 +5,11 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.app.dao.AppDAO;
 import com.app.dao.NodeDAO;
 import com.app.dao.UserDAO;
+import com.app.model.App;
+import com.app.model.Category;
 import com.app.model.Node;
 import com.app.model.User;
 import com.app.service.GeneralService;
@@ -18,6 +21,9 @@ public class GeneralServiceHBImpl implements GeneralService {
 	
 	@Autowired
     private UserDAO aUserDAO;
+	
+	@Autowired
+    private AppDAO aAppDAO;
 
     @Override
     public void insertNode() {
@@ -51,7 +57,11 @@ public class GeneralServiceHBImpl implements GeneralService {
 
 	@Override
 	public void updateNode() {
-		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void insertApp(App anApp) {
+		aAppDAO.insertApp(anApp);
 	}
 }
