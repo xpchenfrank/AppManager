@@ -16,8 +16,18 @@ import com.app.dao.NodeDAO;
 import com.app.dao.UserDAO;
 import com.app.model.App;
 import com.app.model.Category;
+import com.app.model.Tag;
 import com.app.service.GeneralService;
 
+/**
+ * 这个是用来生成初始化数据的类
+ * 
+ * http://localhost:8080/AppManager/am/init/createCat
+ * http://localhost:8080/AppManager/am/init/createTag
+ *
+ * 2015-1-10
+ *
+ */
 @Controller
 @RequestMapping("/init")
 public class InitController {
@@ -41,47 +51,25 @@ public class InitController {
     @RequestMapping(value = "/createCat", method = RequestMethod.GET)
     public String createCategories(Model model) {
         
-    	Category cat1 = new Category();
-    	cat1.setName("社交");
-    	
     	String[] categories = {"社交", "视频", "阅读", "音乐", "生活", "系统", "安全"};
     	
         for(String tempStr : categories) {
-        	Category cat = new Category();
-        	cat.setName(tempStr);
         	aAppDAO.upsertCat(tempStr);
         }
     	
-    	Category cat2 = new Category();
-    	cat2.setName("视频");
-    	
-    	Category cat3 = new Category();
-    	cat3.setName("阅读");
-    	
-    	Category cat4 = new Category();
-    	cat4.setName("音乐");
-    	
-    	Category cat5 = new Category();
-    	cat5.setName("生活");
-    	
-    	Category cat6 = new Category();
-    	cat6.setName("系统");
-        
         return null;
     }
     
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String showAddApp(Model model) {
-    	return "uploadApp";
-    }
-    
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String showApp(Model model) {
+    @RequestMapping(value = "/createTag", method = RequestMethod.GET)
+    public String createTags(Model model) {
+        
+    	String[] tags = {"结算", "推荐", "精品", "高富帅", "白富美"};
     	
-    	//获取所有可选的类别
+        for(String tempStr : tags) {
+        	aAppDAO.upsertTag(tempStr);
+        }
     	
-    	
-    	return "admin";
+        return null;
     }
     
 }

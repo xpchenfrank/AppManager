@@ -56,6 +56,7 @@
 		<mapping class="com.app.model.User" />
 		<mapping class="com.app.model.Node" />
 		<mapping class="com.app.model.App" />
+		<mapping class="com.app.model.Tag" />
 		<mapping class="com.app.model.Category" />
 
     </session-factory>

@@ -34,7 +34,7 @@ public class Category {
 	private long id;
 	
 	//分类的名字
-	@Column(name="name")
+	@Column(name="name", unique = true, nullable = false)
 	private String name;
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)

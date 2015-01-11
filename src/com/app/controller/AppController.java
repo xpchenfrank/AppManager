@@ -1,6 +1,7 @@
 package com.app.controller;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.ServletContext;
@@ -16,6 +17,7 @@ import com.app.dao.NodeDAO;
 import com.app.dao.UserDAO;
 import com.app.model.App;
 import com.app.model.Category;
+import com.app.model.Tag;
 import com.app.service.GeneralService;
 
 @Controller
@@ -67,6 +69,17 @@ public class AppController {
     
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String showAddApp(Model model) {
+    	
+    	//获取所有可选的类别
+    	List<Category> cats = aAppDAO.findAllCat();
+    	
+    	model.addAttribute("cats", cats);
+    	
+    	//获取所有的可选Tag
+    	List<Tag> tags = aAppDAO.findAllTag();
+    	
+    	model.addAttribute("tags", tags);
+    	
     	return "uploadApp";
     }
     
@@ -74,7 +87,15 @@ public class AppController {
     public String showApp(Model model) {
     	
     	//获取所有可选的类别
+    	List<Category> cats = aAppDAO.findAllCat();
     	
+    	model.addAttribute("cats", cats);
+    	
+    	/*
+    	for(Category tempCat : cats) {
+    		System.out.println(tempCat.getName());
+    	}
+    	*/
     	
     	return "admin";
     }

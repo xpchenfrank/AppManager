@@ -9,6 +9,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import com.app.dao.AppDAO;
 import com.app.model.App;
 import com.app.model.Category;
+import com.app.model.Tag;
 
 public class AppDAOHBImpl extends HibernateDaoSupport implements AppDAO {
 
@@ -59,5 +60,28 @@ public class AppDAOHBImpl extends HibernateDaoSupport implements AppDAO {
 	public Category upsertCat(String catName) {
 		return upsertCat(catName, new HashSet<App>());
 	}
-    
+
+	@Override
+	public List<Category> findAllCat() {
+		List<Category> cats = getHibernateTemplate().find("from Category cat where cat.deleted=false");
+		return cats;
+	}
+
+	// Start Tag
+	@Override
+	public Tag upsertTag(String catName) {
+		Tag aTag = new Tag();
+		aTag.setName(catName);
+		aTag.setApps(new HashSet<App>());
+		getHibernateTemplate().saveOrUpdate(aTag);
+		return aTag;
+	}
+
+	@Override
+	public List<Tag> findAllTag() {
+		List<Tag> tags = getHibernateTemplate().find("from Tag tag where tag.deleted=false");
+		return tags;
+	}
+	// End Tag
+	
 }
