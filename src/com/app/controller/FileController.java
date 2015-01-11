@@ -20,7 +20,7 @@ import com.app.util.FileOperateUtil;
 */
 @Controller
 @RequestMapping(value = "background/fileOperate")
-public class FileOperateController {
+public class FileController {
     
    /**
     * 到上传文件的位置
@@ -38,6 +38,7 @@ public class FileOperateController {
    @RequestMapping(value = "upload")
    public ModelAndView upload(HttpServletRequest request) throws Exception {
 
+	   System.out.println("upload start");
        Map<String, Object> map = new HashMap<String, Object>();
 
        // 别名
@@ -48,12 +49,19 @@ public class FileOperateController {
        Map<String, Object[]> values = new HashMap<String, Object[]>();
        values.put("alais", alaises);
 
+      // List<Map<String, Object>> result = FileOperateUtil.upload(request,
+      //         params, values, "weixin", "appPic", "1.0.0");
+
+       /*
        List<Map<String, Object>> result = FileOperateUtil.upload(request,
-               params, values);
-
+    		     "weixin", "appPic", "1.0.0");
+    		   
        map.put("result", result);
+        */
+       
+       System.out.println("upload end");
 
-       return new ModelAndView("background/fileOperate/list", map);
+       return new ModelAndView("Test", map);
    }
 
    /**

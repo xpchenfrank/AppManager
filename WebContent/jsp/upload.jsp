@@ -12,12 +12,10 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 <body>
 </body>
 <form enctype="multipart/form-data"
-    action="<c:url value="/lj/background/fileOperate/upload.html" />" method="post">
-    <input type="file" name="file1" /> <input type="text" name="alais" /><br />
-    <!-- 
-    <input type="file" name="file2" /> <input type="text" name="alais" /><br />
+    action="<c:url value="/am/app/add" />" method="post">
+    <input type="file" name="appIcon" /> <input type="text" name="appIcon" /><br />
+    <input type="file" name="appFile" /> <input type="text" name="appfile" /><br />
     <input type="file" name="file3" /> <input type="text" name="alais" /><br />
-     -->
     <input type="submit" value="上传" />
 </form>
 </html>

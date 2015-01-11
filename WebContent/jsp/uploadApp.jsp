@@ -108,7 +108,11 @@ body {
 	{
 	color: #fff;
 }
+
 </style>
+
+    <script language="JavaScript" type="text/javascript" src="js/ajaxfileupload.js"></script>
+    <script language="JavaScript" type="text/javascript" src="js/uploadApp.js"></script>
 </head>
 
 <body cz-shortcut-listen="true">
@@ -119,7 +123,7 @@ body {
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
 					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
+					<span class="sr-only">Toggle </span> <span
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
@@ -189,11 +193,14 @@ body {
 
 				<h1 class="page-header" style="font-size: 20px; margin-left: -15px;">上传应用</h1>
 
-				<form class="form-horizontal" role="form">
+				<form class="form-horizontal" role="form"  
+				    enctype="multipart/form-data"
+                    action="<c:url value="/am/app/add" />" method="post">
+                    
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">应用分类:</label>
 						<div class="col-sm-2">
-							<select class="form-control col-xs-3">
+							<select class="form-control col-xs-3" name="appCat">
 								<c:forEach items="${cats}" var="cat" varStatus="status">
 									<option>${cat.name}</option>
 								</c:forEach>
@@ -206,7 +213,7 @@ body {
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">应用显示名称:</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" id="inputPassword3"
+							<input type="text" class="form-control" id="appDisplayName" name="appDisplayName"
 								placeholder="显示名称是会显示在界面上的名字,例如: 微信" />
 						</div>
 					</div>
@@ -216,17 +223,25 @@ body {
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">应用文件名称:</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" id="inputPassword3"
+							<input type="text" class="form-control" id="appFileName"  name="appFileName"
 								placeholder="文件名称是用来在后台存储的,例如: weixin" />
 						</div>
 					</div>
+					
+					<div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">应用广告语:</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="appShortDesc" name="appShortDesc"
+                                placeholder="" />
+                        </div>
+                    </div>
 
 					<div class="row tableLine"></div>
 
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">应用版本:</label>
 						<div class="col-sm-2">
-							<input type="text" class="form-control" id="inputPassword3"
+							<input type="text" class="form-control" id="appVersion" name="appVersion"
 								placeholder="1.0.0" />
 						</div>
 					</div>
@@ -234,11 +249,14 @@ body {
 					<div class="row tableLine"></div>
 
 					<div class="form-group">
-						<label for="inputEmail3" class="col-sm-2 control-label">应用图标:</label>
-						<div class="col-sm-4">
-							<input type="file" class="form-control" id="icon"/ >
-						</div>
-					</div>
+                        <label for="inputEmail3" class="col-sm-2 control-label">应用图标:</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="inputText"  name="upfile" id="upfile" readonly >  
+
+		                    <input type="button" class="btn btn-primary"  style="margin-top: -3px;"  value="选择" onclick="path.click()">  
+		                    <input type="file" id="path" style="display:none"  name="appIcon" onchange="upfile.value=this.value">
+                        </div>
+                    </div>
 
 					<div class="row tableLine"></div>
 
@@ -270,33 +288,7 @@ body {
 						</div>
 					</div>
 				</form>
-
-				<!-- 
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="200x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzBEOEZEQiIvPjxnPjx0ZXh0IHg9Ijc1LjUiIHk9IjEwMCIgc3R5bGU9ImZpbGw6I0ZGRkZGRjtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjIwMHgyMDA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="200x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzM5REJBQyIvPjxnPjx0ZXh0IHg9Ijc1LjUiIHk9IjEwMCIgc3R5bGU9ImZpbGw6IzFFMjkyQztmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjIwMHgyMDA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="200x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzBEOEZEQiIvPjxnPjx0ZXh0IHg9Ijc1LjUiIHk9IjEwMCIgc3R5bGU9ImZpbGw6I0ZGRkZGRjtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjIwMHgyMDA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="200x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzM5REJBQyIvPjxnPjx0ZXh0IHg9Ijc1LjUiIHk9IjEwMCIgc3R5bGU9ImZpbGw6IzFFMjkyQztmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjIwMHgyMDA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
-
-          <h2 class="sub-header">应用管理</h2>
-           -->
+				
 				<div class="row"></div>
 
 			</div>

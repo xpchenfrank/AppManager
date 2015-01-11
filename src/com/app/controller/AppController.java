@@ -1,16 +1,26 @@
 package com.app.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.app.dao.AppDAO;
 import com.app.dao.NodeDAO;
@@ -19,6 +29,7 @@ import com.app.model.App;
 import com.app.model.Category;
 import com.app.model.Tag;
 import com.app.service.GeneralService;
+import com.app.util.FileOperateUtil;
 
 @Controller
 @RequestMapping("/app")
@@ -40,30 +51,41 @@ public class AppController {
     @Autowired
     private GeneralService gService;
     
-    @RequestMapping(value = "/addApp", method = RequestMethod.GET)
-    public String addApp(Model model) {
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String addApp(HttpServletRequest request, Model model) throws Exception {
         
-    	Category aCat = new Category();
-    	aCat.setName("社交");
-    	
-    	Set<Category> cats = new HashSet<Category>();
-    	cats.add(aCat);
-    	
-    	App app1 = new App();
-    	app1.setDisplayname("微信");
-    	app1.setFilename("weixin_101");
-    	app1.setVersion("1.0.1");
-    	app1.setCats(cats);
-    	
-    	App app2 = new App();
-    	app2.setDisplayname("QQ");
-    	app2.setFilename("qq_100");
-    	app2.setVersion("1.0.0");
-    	app2.setCats(cats);
-    	
-    	gService.insertApp(app1);
-    	gService.insertApp(app2);
+    	//先从request里面获取到两个文件
+        MultipartHttpServletRequest mRequest = (MultipartHttpServletRequest) request;
+        Map<String, MultipartFile> fileMap = mRequest.getFileMap();
         
+        MultipartFile appIcon = fileMap.get("appIcon");
+        MultipartFile appFile = fileMap.get("appFile");
+        
+    	App app = new App();
+    	app.setDisplayname("QQ");
+    	app.setFilename("qq_100");
+    	app.setVersion("1.0.0");
+        
+        gService.addApp(request, app, appIcon, appFile);
+
+        /*
+        for (Iterator<Map.Entry<String, MultipartFile>> it = fileMap.entrySet()
+                .iterator(); it.hasNext(); i++) {
+
+            Map.Entry<String, MultipartFile> entry = it.next();
+            MultipartFile mFile = entry.getValue();
+
+            fileName = mFile.getOriginalFilename();
+            
+            //重命名文件名到我们想要的名字
+            fileName = renameStoreFileName(fileName, storeName, versionNum);
+            		
+            //上传文件
+            BufferedOutputStream outputStream = 
+                    new BufferedOutputStream(new FileOutputStream(new File(uploadDir + fileName)));
+
+            FileCopyUtils.copy(mFile.getInputStream(), outputStream);
+        */
         return "index";
     }
     

@@ -54,6 +54,13 @@ public class FileOperateUtil {
 
         return fileName;
     }
+    
+    public static String renameStoreFileName(String originalName, String storeName, String versionNum) {
+    	int lastDot = originalName.lastIndexOf('.');
+    	String suffix = originalName.substring(lastDot, originalName.length());
+    	String fileVersionNum = versionNum.replace(".", "");
+    	return storeName+"_"+ fileVersionNum + suffix;
+    }
 
     /**
      * 压缩后的文件名
@@ -70,10 +77,56 @@ public class FileOperateUtil {
     }
 
     /**
-     * 上传文件
+     * 上传文件  并且打包成zip文件
+     * 
+     * StoreName 是指最终保存的文件的名字
+     * StoreFolder 是指appIcon  appFile 两个文件夹前者放app的图片，后者放app的实际文件
      * 
      */
     public static List<Map<String, Object>> upload(HttpServletRequest request,
+    		MultipartFile file,
+            String storeName, String folderName,
+            String versionNum) throws Exception {
+
+    	if(file == null) {
+    		return null;
+    	}
+    	
+        List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+
+        MultipartHttpServletRequest mRequest = (MultipartHttpServletRequest) request;
+        Map<String, MultipartFile> fileMap = mRequest.getFileMap();
+
+        String uploadDir = request.getSession().getServletContext()
+                .getRealPath("/")
+                + folderName + "/";
+        File path = new File(uploadDir);
+
+        if (!path.exists()) {
+            path.mkdir();
+        }
+
+        String fileName = null;
+
+        fileName = file.getOriginalFilename();
+        
+        //重命名文件名到我们想要的名字
+        fileName = renameStoreFileName(fileName, storeName, versionNum);
+        		
+        //上传文件
+        BufferedOutputStream outputStream = 
+                new BufferedOutputStream(new FileOutputStream(new File(uploadDir + fileName)));
+
+        FileCopyUtils.copy(file.getInputStream(), outputStream);
+            
+        return result;
+    }
+    
+    /**
+     * 上传文件  并且打包成zip文件
+     * 
+     */
+    public static List<Map<String, Object>> uploadAndZip(HttpServletRequest request,
             String[] params, Map<String, Object[]> values) throws Exception {
 
         List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();

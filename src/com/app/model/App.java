@@ -43,6 +43,12 @@ public class App {
 	@Column(name="version")
 	private String version;
 	
+	@Column(name="shortdesc")
+	private String shortDesc;
+	
+	@Column(name="longdesc")
+	private String longDesc;
+	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinTable(name = "AM_CAT_APP_XREF", joinColumns = { @JoinColumn(name = "APP_ID") }, inverseJoinColumns = { @JoinColumn(name = "CAT_ID") })
 	private Set<Category> cats = new HashSet<Category>(0);
@@ -112,6 +118,22 @@ public class App {
 
 	public void setTags(Set<Category> tags) {
 		this.tags = tags;
+	}
+
+	public String getShortDesc() {
+		return shortDesc;
+	}
+
+	public void setShortDesc(String shortDesc) {
+		this.shortDesc = shortDesc;
+	}
+
+	public String getLongDesc() {
+		return longDesc;
+	}
+
+	public void setLongDesc(String longDesc) {
+		this.longDesc = longDesc;
 	}
 	
 }
