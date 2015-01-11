@@ -7,9 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public class CXPUtils {
     
-    /**
-     *  è®¾ç½®ajaxè¿”å›æ—¶çš„å¤´ä¿¡æ¯
-     */
     public static void setAjaxHeader(HttpServletRequest req, HttpServletResponse resp, String type) {
         
         try {
@@ -28,5 +25,24 @@ public class CXPUtils {
             e.printStackTrace();
         }
     }
+    
+    
+    public static String toInClause(String[] strArray) {
+    	StringBuffer strBuffer = new StringBuffer();
+    	strBuffer.append("(");
+    	for(String temp : strArray) {
+    		strBuffer.append("'"+temp+"'");
+    		strBuffer.append(",");
+    	}
+    	strBuffer.deleteCharAt(strBuffer.lastIndexOf(","));
+    	strBuffer.append(")");
+    	return strBuffer.toString();
+    }
+    
+    public static void main(String[] args) {
+    	String[] testArray ={"Èöµ©·ÉÈ÷", "Ë®µç·Ñ", "Èöµ©·ÉÈ÷"};
+    	System.out.println(toInClause(testArray));
+	}
+    
 
 }

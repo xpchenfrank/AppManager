@@ -56,6 +56,9 @@ public class FileOperateUtil {
     }
     
     public static String renameStoreFileName(String originalName, String storeName, String versionNum) {
+    	if(originalName == null || originalName.length() <= 0) {
+    		return null;
+    	}
     	int lastDot = originalName.lastIndexOf('.');
     	String suffix = originalName.substring(lastDot, originalName.length());
     	String fileVersionNum = versionNum.replace(".", "");
@@ -88,7 +91,7 @@ public class FileOperateUtil {
             String storeName, String folderName,
             String versionNum) throws Exception {
 
-    	if(file == null) {
+    	if(file == null || file.isEmpty()) {
     		return null;
     	}
     	

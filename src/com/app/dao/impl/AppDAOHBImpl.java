@@ -1,15 +1,21 @@
 package com.app.dao.impl;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.app.dao.AppDAO;
 import com.app.model.App;
 import com.app.model.Category;
 import com.app.model.Tag;
+import com.app.util.CXPUtils;
 
 public class AppDAOHBImpl extends HibernateDaoSupport implements AppDAO {
 
@@ -83,5 +89,30 @@ public class AppDAOHBImpl extends HibernateDaoSupport implements AppDAO {
 		return tags;
 	}
 	// End Tag
+
+	@Override
+	public Category findCatByName(String catName) {
+		List<Category> catList = getHibernateTemplate().find("from Category cat where cat.deleted=false and cat.name=?", catName);
+		if(catList != null && catList.size() > 0) {
+			return catList.get(0);
+		}
+		return null;
+	}
+
+	@Override
+	public List<Tag> findTagsByNames(String[] tags) {
+		
+		List<String> tagList = new ArrayList<String> ();
+		tagList.add("推荐");
+		tagList.add("精品");
+		
+		String[] testArray ={"精品", "推荐", "测试"}; 
+		
+		List<Tag> tagsList = getHibernateTemplate().find("from Tag tag where tag.deleted=false and tag.name in " + CXPUtils.toInClause(testArray) );
+		
+		return tagsList;
+		
+	}
+
 	
 }

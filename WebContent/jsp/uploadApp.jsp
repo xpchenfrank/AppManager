@@ -108,11 +108,31 @@ body {
 	{
 	color: #fff;
 }
-
 </style>
 
-    <script language="JavaScript" type="text/javascript" src="js/ajaxfileupload.js"></script>
-    <script language="JavaScript" type="text/javascript" src="js/uploadApp.js"></script>
+	<script language="JavaScript" type="text/javascript"
+		src="js/ajaxfileupload.js"></script>
+	<script language="JavaScript" type="text/javascript"
+		src="js/uploadApp.js"></script>
+	<script language="JavaScript" type="text/javascript"
+	    src="js/bootstrap.js"></script>
+	
+
+	<script type="text/javascript">
+	
+			jQuery(function() {
+					//$('#uploadSuccessful').modal('hide');
+			      var uploadSuccessful = <%=request.getAttribute("uploadSuccessful")%>;
+				  if(uploadSuccessful != null && uploadSuccessful == true) {
+					   $('#uploadSuccessful').modal({
+	                        keyboard: false
+	                    });
+					   $('#uploadSuccessful').modal('show');
+				  }
+			});
+			
+		
+	</script>
 </head>
 
 <body cz-shortcut-listen="true">
@@ -123,9 +143,8 @@ body {
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
 					aria-controls="navbar">
-					<span class="sr-only">Toggle </span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
+					<span class="sr-only">Toggle </span> <span class="icon-bar"></span>
+					<span class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand"
 					href="./Dashboard Template for Bootstrap_files/Dashboard Template for Bootstrap.html"
@@ -158,7 +177,7 @@ body {
 			<div class="col-sm-3 col-md-2 sidebar"
 				style="top: 49px; padding: 0px 20px 20px 20px;">
 				<ul class="nav nav-sidebar">
-					<li class="active mySidebar dalei" style="padding-left: 20px;"><span><img
+					<li class="active mySidebar dalei" style="padding-left: 20px;" onclick="window.location.href='am/app/list'"><span><img
 							src="images/iconfont-yingyong.png"
 							style="margin-top: -2px; margin-right: 17px;"></img></span>应用管理</li>
 					<li class="mySidebar"><a href="" style="padding-left: 78px;">全部</a></li>
@@ -193,10 +212,10 @@ body {
 
 				<h1 class="page-header" style="font-size: 20px; margin-left: -15px;">上传应用</h1>
 
-				<form class="form-horizontal" role="form"  
-				    enctype="multipart/form-data"
-                    action="<c:url value="/am/app/add" />" method="post">
-                    
+				<form class="form-horizontal" role="form"
+					enctype="multipart/form-data"
+					action="<c:url value="/am/app/add" />" method="post">
+
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">应用分类:</label>
 						<div class="col-sm-2">
@@ -213,8 +232,8 @@ body {
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">应用显示名称:</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" id="appDisplayName" name="appDisplayName"
-								placeholder="显示名称是会显示在界面上的名字,例如: 微信" />
+							<input type="text" class="form-control" id="appDisplayName"
+								name="appDisplayName" placeholder="显示名称是会显示在界面上的名字,例如: 微信" />
 						</div>
 					</div>
 
@@ -223,47 +242,61 @@ body {
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">应用文件名称:</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" id="appFileName"  name="appFileName"
-								placeholder="文件名称是用来在后台存储的,例如: weixin" />
+							<input type="text" class="form-control" id="appFileName"
+								name="appFileName" placeholder="文件名称是用来在后台存储的,建议使用拼音,例如: weixin" />
 						</div>
 					</div>
-					
+
 					<div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">应用广告语:</label>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" id="appShortDesc" name="appShortDesc"
-                                placeholder="" />
-                        </div>
-                    </div>
+						<label for="inputEmail3" class="col-sm-2 control-label">应用广告语:</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="appShortDesc"
+								name="appShortDesc" placeholder="" />
+						</div>
+					</div>
 
 					<div class="row tableLine"></div>
 
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">应用版本:</label>
 						<div class="col-sm-2">
-							<input type="text" class="form-control" id="appVersion" name="appVersion"
-								placeholder="1.0.0" />
+							<input type="text" class="form-control" id="appVersion"
+								name="appVersion" placeholder="1.0.0" />
 						</div>
 					</div>
 
 					<div class="row tableLine"></div>
 
 					<div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">应用图标:</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="inputText"  name="upfile" id="upfile" readonly >  
+						<label for="inputEmail3" class="col-sm-2 control-label">应用图标:</label>
+						<div class="col-sm-5">
+							<input type="text" class="inputText" name="upfileAppIcon"
+								id="upfileAppIcon" readonly> <input type="button"
+								class="btn btn-primary" style="margin-top: -3px;" value="选择"
+								onclick="pathAppIcon.click()"> <input type="file"
+								id="pathAppIcon" style="display: none" name="appIcon"
+								onchange="javascript:uploadAppIcon('pathAppIcon');">
+						</div>
+					</div>
 
-		                    <input type="button" class="btn btn-primary"  style="margin-top: -3px;"  value="选择" onclick="path.click()">  
-		                    <input type="file" id="path" style="display:none"  name="appIcon" onchange="upfile.value=this.value">
-                        </div>
-                    </div>
+					<div class="form-group" id="previewDiv" style="display: none;">
+						<label for="inputEmail3" class="col-sm-2 control-label"></label>
+						<div class="col-sm-5">
+							<img id="previewImg" src="" style="width: 60px; height: 60px;"></img>
+						</div>
+					</div>
 
 					<div class="row tableLine"></div>
 
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">应用文件:</label>
-						<div class="col-sm-4">
-							<input type="file" class="form-control" id="icon"/ >
+						<div class="col-sm-5">
+							<input type="text" class="inputText" name="upfileAppFile"
+								id="upfileAppFile" readonly> <input type="button"
+								class="btn btn-primary" style="margin-top: -3px;" value="选择"
+								onclick="pathAppFile.click()"> <input type="file"
+								id="pathAppFile" style="display: none" name="appFile"
+								onchange="upfileAppFile.value=this.value">
 						</div>
 					</div>
 
@@ -274,7 +307,7 @@ body {
 						<div class="col-sm-5">
 							<c:forEach items="${tags}" var="tag" varStatus="status">
 								<label class="checkbox-inline"> <input type="checkbox"
-									id="inlineCheckbox1" value="option1">${tag.name}
+									name="appTag" id="inlineCheckbox1" value="${tag.name}">${tag.name}
 								</label>
 							</c:forEach>
 						</div>
@@ -288,7 +321,7 @@ body {
 						</div>
 					</div>
 				</form>
-				
+
 				<div class="row"></div>
 
 			</div>
@@ -339,5 +372,22 @@ body {
 		<defs></defs>
 		<text x="0" y="10"
 			style="font-weight:bold;font-size:10pt;font-family:Arial, Helvetica, Open Sans, sans-serif;dominant-baseline:middle">200x200</text></svg>
+
+	<!-- 模态对话框 -->
+    <div id="uploadSuccessful" class="modal fade"
+        tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                      <h4 class="modal-title" id="mySmallModalLabel">APP上传成功</h4>
+                    </div>
+                    <div class="modal-body" style="text-align: center;">
+                         <button type="button" class="btn btn-primary"  onclick="$('#uploadSuccessful').modal('hide');">确认</button>
+                    </div>
+                  </div>
+        </div>
+    </div>
 </body>
 </html>

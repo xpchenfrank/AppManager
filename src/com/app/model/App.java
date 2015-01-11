@@ -55,7 +55,7 @@ public class App {
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinTable(name = "AM_TAG_APP_XREF", joinColumns = { @JoinColumn(name = "APP_ID") }, inverseJoinColumns = { @JoinColumn(name = "TAG_ID") })
-	private Set<Category> tags = new HashSet<Category>(0);
+	private Set<Tag> tags = new HashSet<Tag>(0);
 	
 	@Column(name="deleted", columnDefinition="BOOLEAN default false")
     private boolean deleted;
@@ -112,11 +112,11 @@ public class App {
 		this.cats = cats;
 	}
 
-	public Set<Category> getTags() {
+	public Set<Tag> getTags() {
 		return tags;
 	}
 
-	public void setTags(Set<Category> tags) {
+	public void setTags(Set<Tag> tags) {
 		this.tags = tags;
 	}
 

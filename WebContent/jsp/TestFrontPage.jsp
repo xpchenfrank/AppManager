@@ -17,8 +17,19 @@
     <script src="js/bootstrap.js"></script>
     
     <script type="text/javascript">
-		
-		
+    
+    jQuery(function() {
+            $('#uploadSuccessful').modal({
+                keyboard: true
+            })
+          $('#uploadSuccessful').modal('show');
+    });
+    
+      var uploadSuccessful = <%=request.getAttribute("uploadSuccessful")%>;
+      if(uploadSuccessful != null && uploadSuccessful == true) {
+    
+      }
+
 	</script>
     
     <style>
@@ -71,6 +82,22 @@
 </head>
 
 <body>
+
+    <div id="uploadSuccessful" class="modal fade bs-example-modal-sm"
+        tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+			<div class="modal-content">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			          <h4 class="modal-title" id="mySmallModalLabel">APP 上传成功</h4>
+			        </div>
+			        <div class="modal-body">
+			             <button type="button" class="btn btn-primary">确认</button>
+			        </div>
+			      </div>
+        </div>
+    </div>
     <div class="container-fluid">
 	    <div class="row homeTitle">
 		  <div class="col-xs-3 homeColumn">首页</div>

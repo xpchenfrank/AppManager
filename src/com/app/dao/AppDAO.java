@@ -24,6 +24,7 @@ public interface AppDAO {
     public void findAllApp ();
     
     // Category Start
+    public Category findCatByName(String catName);
     
     public Category upsertCat(String catName);
     
@@ -38,6 +39,8 @@ public interface AppDAO {
     public Tag upsertTag(String catName);
     
     public List<Tag> findAllTag ();
+    
+    public List<Tag> findTagsByNames (String[] tags);
     
     // Tag End
     

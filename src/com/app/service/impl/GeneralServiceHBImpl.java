@@ -67,24 +67,6 @@ public class GeneralServiceHBImpl implements GeneralService {
 	@Override
 	public void addApp(HttpServletRequest req, App app, MultipartFile appIcon, MultipartFile appFile) throws Exception {
 		
-		Category aCat = new Category();
-    	aCat.setName("社交");
-    	
-    	Set<Category> cats = new HashSet<Category>();
-    	cats.add(aCat);
-    	
-    	App app1 = new App();
-    	app1.setDisplayname("微信");
-    	app1.setFilename("weixin_101");
-    	app1.setVersion("1.0.1");
-    	app1.setCats(cats);
-    	
-    	App app2 = new App();
-    	app2.setDisplayname("QQ");
-    	app2.setFilename("qq_100");
-    	app2.setVersion("1.0.0");
-    	app2.setCats(cats);
-    	
 		//上传图标
     	FileOperateUtil.upload(req, appIcon,
     			app.getFilename(), "appIcon", app.getVersion());
@@ -93,6 +75,7 @@ public class GeneralServiceHBImpl implements GeneralService {
     	FileOperateUtil.upload(req, appFile,
     			app.getFilename(), "appFile", app.getVersion());
     			
+    	aAppDAO.insertApp(app);
 		
 	}
 }
