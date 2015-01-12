@@ -137,77 +137,11 @@ body {
 
 <body cz-shortcut-listen="true">
 
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle </span> <span class="icon-bar"></span>
-					<span class="icon-bar"></span> <span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand"
-					href="./Dashboard Template for Bootstrap_files/Dashboard Template for Bootstrap.html"
-					style="font-size: 27px; padding-left: 19px; color: #fff;"> <span><img
-						src="images/iconfont-iconfontyingyongjiasu.png"
-						style="margin-top: -2px; margin-right: 10px;"></img></span>城市生活应用管理平台
-				</a>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a
-						href="./Dashboard Template for Bootstrap_files/Dashboard Template for Bootstrap.html">首页</a></li>
-					<li><a
-						href="./Dashboard Template for Bootstrap_files/Dashboard Template for Bootstrap.html">设置</a></li>
-					<li><a
-						href="./Dashboard Template for Bootstrap_files/Dashboard Template for Bootstrap.html">退出</a></li>
-				</ul>
-				<form class="navbar-form navbar-right">
-					<!-- 
-            <input type="text" class="form-control" placeholder="Search...">
-             -->
-				</form>
-			</div>
-		</div>
-	</nav>
-
+    <%@ include file="/jsp/adminHeader.jsp"%>
+    
 	<div class="container-fluid">
 		<div class="row">
-			<!-- style="background-color: #222222;" -->
-			<div class="col-sm-3 col-md-2 sidebar"
-				style="top: 49px; padding: 0px 20px 20px 20px;">
-				<ul class="nav nav-sidebar">
-					<li class="active mySidebar dalei" style="padding-left: 20px;" onclick="window.location.href='am/app/list'"><span><img
-							src="images/iconfont-yingyong.png"
-							style="margin-top: -2px; margin-right: 17px;"></img></span>应用管理</li>
-					<li class="mySidebar"><a href="" style="padding-left: 78px;">全部</a></li>
-					<li class="mySidebar"><a href="" style="padding-left: 78px;">社交</a></li>
-					<li class="mySidebar"><a href="" style="padding-left: 78px;">视频</a></li>
-					<li class="mySidebar"><a href="" style="padding-left: 78px;">音乐</a></li>
-					<li class="mySidebar"><a href="" style="padding-left: 78px;">生活</a></li>
-					<li class="mySidebar"><a href="" style="padding-left: 78px;">阅读</a></li>
-					<li class="mySidebar"><a href="" style="padding-left: 78px;">系统</a></li>
-					<li class="mySidebar"><a href="" style="padding-left: 78px;">安全</a></li>
-				</ul>
-				<ul class="nav nav-sidebar">
-					<li class="mySidebar dalei" style="olor: #428bca;"><a
-						style="padding: 0px 0px 0px 20px;"><span><img
-								src="images/iconfont-changdiguanli.png"
-								style="margin-top: -2px; margin-right: 17px;"></img></span>网点管理</a></li>
-				</ul>
-				<ul class="nav nav-sidebar">
-					<li class="mySidebar dalei" style="color: #428bca;"><a
-						style="padding: 0px 0px 0px 20px;"><span><img
-								src="images/iconfont-neibuguanli.png"
-								style="margin-top: -2px; margin-right: 17px;"></img></span>用户管理</a></li>
-				</ul>
-				<ul class="nav nav-sidebar">
-					<li class="mySidebar dalei" style="color: #428bca;"><a
-						style="padding: 0px 0px 0px 20px;"><span><img
-								src="images/iconfont-reportMg.png"
-								style="margin-top: -2px; margin-right: 17px;"></img></span>数据统计</a></li>
-				</ul>
-			</div>
+			<%@ include file="/jsp/adminSidebar.jsp"%>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
 				<h1 class="page-header" style="font-size: 20px; margin-left: -15px;">上传应用</h1>

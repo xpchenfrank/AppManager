@@ -13,13 +13,16 @@
     <link rel="icon" href="http://v3.bootcss.com/favicon.ico">
      -->
 
+	<%@ include file="/jsp/head.jsp"%>
+	<base href="<%=basePath%>">
+
     <title>城市生活应用管理平台</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../css/dashboard.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -34,7 +37,7 @@
     <![endif]-->
     
     <!-- 
-    <link rel="stylesheet" href="../css/mybase.css"/>
+    <link rel="stylesheet" href="css/mybase.css"/>
      -->
     <style>
 	    body 
@@ -105,373 +108,325 @@
 
   <body cz-shortcut-listen="true">
 
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="./Dashboard Template for Bootstrap_files/Dashboard Template for Bootstrap.html" 
-             style="font-size: 27px;padding-left: 19px;color: #fff;">
-             <span><img src="../images/iconfont-iconfontyingyongjiasu.png" style="margin-top: -2px;margin-right: 10px;"></img></span>城市生活应用管理平台
-          </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="./Dashboard Template for Bootstrap_files/Dashboard Template for Bootstrap.html">首页</a></li>
-            <li><a href="./Dashboard Template for Bootstrap_files/Dashboard Template for Bootstrap.html">设置</a></li>
-            <li><a href="./Dashboard Template for Bootstrap_files/Dashboard Template for Bootstrap.html">退出</a></li>
-          </ul>
-          <form class="navbar-form navbar-right">
-          <!-- 
-            <input type="text" class="form-control" placeholder="Search...">
-             -->
-          </form>
-        </div>
-      </div>
-    </nav>
-
+    <%@ include file="/jsp/adminHeader.jsp"%>
+    
     <div class="container-fluid">
-      <div class="row">
-      <!-- style="background-color: #222222;" -->
-        <div class="col-sm-3 col-md-2 sidebar" style="top: 49px;padding: 0px 20px 20px 20px;">
-          <ul class="nav nav-sidebar">
-            <li class="active mySidebar dalei" style="padding-left: 20px;"><span><img src="../images/iconfont-yingyong.png" style="margin-top: -2px;margin-right: 17px;"></img></span>应用管理</li>
-            <li class="mySidebar"><a href="" style="padding-left: 78px;">全部</a></li>
-            <li class="mySidebar"><a href="" style="padding-left: 78px;">社交</a></li>
-            <li class="mySidebar"><a href="" style="padding-left: 78px;">视频</a></li>
-            <li class="mySidebar"><a href="" style="padding-left: 78px;">音乐</a></li>
-            <li class="mySidebar"><a href="" style="padding-left: 78px;">生活</a></li>
-            <li class="mySidebar"><a href="" style="padding-left: 78px;">阅读</a></li>
-            <li class="mySidebar"><a href="" style="padding-left: 78px;">系统</a></li>
-            <li class="mySidebar"><a href="" style="padding-left: 78px;">安全</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li class="mySidebar dalei" style="olor: #428bca;"><a style="padding: 0px 0px 0px 20px;"><span><img src="../images/iconfont-changdiguanli.png" style="margin-top: -2px;margin-right: 17px;"></img></span>网点管理</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li class="mySidebar dalei" style="color: #428bca;"><a style="padding: 0px 0px 0px 20px;"><span><img src="../images/iconfont-neibuguanli.png" style="margin-top: -2px;margin-right: 17px;"></img></span>用户管理</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li class="mySidebar dalei" style="color: #428bca;"><a style="padding: 0px 0px 0px 20px;"><span><img src="../images/iconfont-reportMg.png" style="margin-top: -2px;margin-right: 17px;"></img></span>数据统计</a></li>
-          </ul>          
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        
-          <h1 class="page-header" style="font-size: 20px;margin-left:-15px;">应用管理</h1>
-          
-		<div class="row">
-		
-		  <div class="col-xs-2">
-		   <button type="submit" class="btn btn-primary"><img src="../images/iconfont-xinjian.png" style="margin-top: -3px;margin-right: 6px;"></img>上传应用</button>
-          </div>
-		  
-		  <div class="col-xs-2" style="margin-left: -20px;">
-		    <select class="form-control col-xs-3">
-              <option>请选择分类</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-		  </div>
-		  <div class="col-xs-3">
-		    <input type="text" class="form-control" placeholder="请输入关键字"/>
-		  </div>
-		  <div class="col-xs-4">
-		    <button type="submit" class="btn btn-default">查询</button>
-		  </div>
-           
-        </div>
-          
-        <div class="tableExample" style="margin-top: 10px;">
-        
-         <div class="table-responsive ">
-              <table class="table table-striped">
-                <thead>
-                  <tr >
-                    <th width="20px" style="border-right: 1px solid #eee;height:40px;line-height:40px;"></th>
-                    <th style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:left;">应用名称</th>
-                    <th style="border-right: 1px solid #eee;height:40px;line-height:40px;width:110px;text-align:center;">应用分类</th>
-                    <th style="border-right: 1px solid #eee;height:40px;line-height:40px;width:110px;text-align:center;">版本型号</th>
-                    <th style="border-right: 1px solid #eee;height:40px;line-height:40px;width:110px;text-align:center;">应用大小</th>
-                    <th style="border-right: 1px solid #eee;height:40px;line-height:40px;width:200px;text-align:center;">操作</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr >
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
-                        <span><img src="../images/app_xiongmao.png" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>功夫熊猫
-                    </td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">社交</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">1.0.9.3</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">17 MB</td>
-                    <td style="height:40px;line-height:40px;text-align:center;">
-	                     <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-	                         <img src="../images/iconfont-xiugai.png"></img>
-	                     </a>
-	                     
-	                     &nbsp;&nbsp;&nbsp;
-	                     
-	                     <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-	                         <img src="../images/iconfont-shanchu.png"></img>
-	                     </a>
-	                     
-	                     &nbsp;&nbsp;&nbsp;
-	                     <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-	                         <img src="../images/iconfont-chaxuntongji.png"></img>
-	                     </a>
-                    </td>
-                  </tr>
-                  <tr >
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
-                        <span><img src="../images/app_xiongmao.png" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>功夫熊猫
-                    </td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">社交</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">1.0.9.3</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">17 MB</td>
-                    <td style="height:40px;line-height:40px;text-align:center;">
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-xiugai.png"></img>
-                         </a>
-                         
-                         &nbsp;&nbsp;&nbsp;
-                         
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-shanchu.png"></img>
-                         </a>
-                         
-                         &nbsp;&nbsp;&nbsp;
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-chaxuntongji.png"></img>
-                         </a>
-                    </td>
-                  </tr>
-                  <tr >
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
-                        <span><img src="../images/app_xiongmao.png" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>功夫熊猫
-                    </td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">社交</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">1.0.9.3</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">17 MB</td>
-                    <td style="height:40px;line-height:40px;text-align:center;">
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-xiugai.png"></img>
-                         </a>
-                         
-                         &nbsp;&nbsp;&nbsp;
-                         
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-shanchu.png"></img>
-                         </a>
-                         
-                         &nbsp;&nbsp;&nbsp;
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-chaxuntongji.png"></img>
-                         </a>
-                    </td>
-                  </tr>                  
-                   <tr >
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
-                        <span><img src="../images/app_xiongmao.png" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>功夫熊猫
-                    </td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">社交</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">1.0.9.3</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">17 MB</td>
-                    <td style="height:40px;line-height:40px;text-align:center;">
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-xiugai.png"></img>
-                         </a>
-                         
-                         &nbsp;&nbsp;&nbsp;
-                         
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-shanchu.png"></img>
-                         </a>
-                         
-                         &nbsp;&nbsp;&nbsp;
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-chaxuntongji.png"></img>
-                         </a>
-                    </td>
-                  </tr>
-                   <tr >
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
-                        <span><img src="../images/app_xiongmao.png" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>功夫熊猫
-                    </td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">社交</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">1.0.9.3</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">17 MB</td>
-                    <td style="height:40px;line-height:40px;text-align:center;">
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-xiugai.png"></img>
-                         </a>
-                         
-                         &nbsp;&nbsp;&nbsp;
-                         
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-shanchu.png"></img>
-                         </a>
-                         
-                         &nbsp;&nbsp;&nbsp;
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-chaxuntongji.png"></img>
-                         </a>
-                    </td>
-                  </tr>
-                   <tr >
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
-                        <span><img src="../images/app_xiongmao.png" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>功夫熊猫
-                    </td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">社交</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">1.0.9.3</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">17 MB</td>
-                    <td style="height:40px;line-height:40px;text-align:center;">
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-xiugai.png"></img>
-                         </a>
-                         
-                         &nbsp;&nbsp;&nbsp;
-                         
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-shanchu.png"></img>
-                         </a>
-                         
-                         &nbsp;&nbsp;&nbsp;
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-chaxuntongji.png"></img>
-                         </a>
-                    </td>
-                  </tr>
-                   <tr >
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
-                        <span><img src="../images/app_xiongmao.png" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>功夫熊猫
-                    </td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">社交</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">1.0.9.3</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">17 MB</td>
-                    <td style="height:40px;line-height:40px;text-align:center;">
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-xiugai.png"></img>
-                         </a>
-                         
-                         &nbsp;&nbsp;&nbsp;
-                         
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-shanchu.png"></img>
-                         </a>
-                         
-                         &nbsp;&nbsp;&nbsp;
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-chaxuntongji.png"></img>
-                         </a>
-                    </td>
-                  </tr>
-                   <tr >
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
-                        <span><img src="../images/app_xiongmao.png" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>功夫熊猫
-                    </td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">社交</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">1.0.9.3</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">17 MB</td>
-                    <td style="height:40px;line-height:40px;text-align:center;">
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-xiugai.png"></img>
-                         </a>
-                         
-                         &nbsp;&nbsp;&nbsp;
-                         
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-shanchu.png"></img>
-                         </a>
-                         
-                         &nbsp;&nbsp;&nbsp;
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-chaxuntongji.png"></img>
-                         </a>
-                    </td>
-                  </tr>
-                   <tr >
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
-                        <span><img src="../images/app_xiongmao.png" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>功夫熊猫
-                    </td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">社交</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">1.0.9.3</td>
-                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">17 MB</td>
-                    <td style="height:40px;line-height:40px;text-align:center;">
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-xiugai.png"></img>
-                         </a>
-                         
-                         &nbsp;&nbsp;&nbsp;
-                         
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-shanchu.png"></img>
-                         </a>
-                         
-                         &nbsp;&nbsp;&nbsp;
-                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-                             <img src="../images/iconfont-chaxuntongji.png"></img>
-                         </a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>          
-        </div>   <!--  table 的封装 -->
-        
-        <!-- 
         <div class="row">
-          
-          <div class="mistat-table-bottom"><div class="mistat-pagination"><div class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers" id="DataTables_Table_0_paginate"><a class="fg-button ui-button ui-state-default first ui-state-disabled" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" id="DataTables_Table_0_first">第一页</a><a class="fg-button ui-button ui-state-default previous ui-state-disabled" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0" id="DataTables_Table_0_previous">上一页</a><span><a class="fg-button ui-button ui-state-default ui-state-disabled"  style="background-color:#428bca;border:0px;" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0">1</a><a class="fg-button ui-button ui-state-default " aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0">2</a></span><a class="fg-button ui-button ui-state-default next" aria-controls="DataTables_Table_0" data-dt-idx="4" tabindex="0" id="DataTables_Table_0_next">下一页</a><a class="fg-button ui-button ui-state-default last" aria-controls="DataTables_Table_0" data-dt-idx="5" tabindex="0" id="DataTables_Table_0_last">最后一页</a></div></div></div>
-          
-        </div>
-         -->
-
-          <!-- 
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="200x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzBEOEZEQiIvPjxnPjx0ZXh0IHg9Ijc1LjUiIHk9IjEwMCIgc3R5bGU9ImZpbGw6I0ZGRkZGRjtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjIwMHgyMDA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="200x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzM5REJBQyIvPjxnPjx0ZXh0IHg9Ijc1LjUiIHk9IjEwMCIgc3R5bGU9ImZpbGw6IzFFMjkyQztmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjIwMHgyMDA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="200x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzBEOEZEQiIvPjxnPjx0ZXh0IHg9Ijc1LjUiIHk9IjEwMCIgc3R5bGU9ImZpbGw6I0ZGRkZGRjtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjIwMHgyMDA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="200x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzM5REJBQyIvPjxnPjx0ZXh0IHg9Ijc1LjUiIHk9IjEwMCIgc3R5bGU9ImZpbGw6IzFFMjkyQztmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjIwMHgyMDA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
-
-          <h2 class="sub-header">应用管理</h2>
-           -->
-          <div class="row">
+            <%@ include file="/jsp/adminSidebar.jsp"%>
             
-          </div>
-           
-        </div>
+	        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	        
+	          <h1 class="page-header" style="font-size: 20px;margin-left:-15px;">应用管理</h1>
+	          
+			<div class="row">
+			
+			  <div class="col-xs-2">
+			   <button type="submit" class="btn btn-primary"><img src="images/iconfont-xinjian.png" style="margin-top: -3px;margin-right: 6px;"></img>上传应用</button>
+	          </div>
+			  
+			  <div class="col-xs-2" style="margin-left: -20px;">
+			    <select class="form-control col-xs-3">
+	              <option>请选择分类</option>
+	              <option>1</option>
+	              <option>2</option>
+	              <option>3</option>
+	              <option>4</option>
+	              <option>5</option>
+	            </select>
+			  </div>
+			  <div class="col-xs-3">
+			    <input type="text" class="form-control" placeholder="请输入关键字"/>
+			  </div>
+			  <div class="col-xs-4">
+			    <button type="submit" class="btn btn-default">查询</button>
+			  </div>
+	           
+	        </div>
+	          
+	        <div class="tableExample" style="margin-top: 10px;">
+	        
+	         <div class="table-responsive ">
+	              <table class="table table-striped">
+	                <thead>
+	                  <tr >
+	                    <th width="20px" style="border-right: 1px solid #eee;height:40px;line-height:40px;"></th>
+	                    <th style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:left;">应用名称</th>
+	                    <th style="border-right: 1px solid #eee;height:40px;line-height:40px;width:110px;text-align:center;">应用分类</th>
+	                    <th style="border-right: 1px solid #eee;height:40px;line-height:40px;width:110px;text-align:center;">版本型号</th>
+	                    <th style="border-right: 1px solid #eee;height:40px;line-height:40px;width:110px;text-align:center;">应用大小</th>
+	                    <th style="border-right: 1px solid #eee;height:40px;line-height:40px;width:200px;text-align:center;">操作</th>
+	                  </tr>
+	                </thead>
+	                <tbody>
+	                  <tr >
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
+	                        <span><img src="images/app_xiongmao.png" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>功夫熊猫
+	                    </td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">社交</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">1.0.9.3</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">17 MB</td>
+	                    <td style="height:40px;line-height:40px;text-align:center;">
+		                     <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+		                         <img src="images/iconfont-xiugai.png"></img>
+		                     </a>
+		                     
+		                     &nbsp;&nbsp;&nbsp;
+		                     
+		                     <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+		                         <img src="images/iconfont-shanchu.png"></img>
+		                     </a>
+		                     
+		                     &nbsp;&nbsp;&nbsp;
+		                     <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+		                         <img src="images/iconfont-chaxuntongji.png"></img>
+		                     </a>
+	                    </td>
+	                  </tr>
+	                  <tr >
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
+	                        <span><img src="images/app_xiongmao.png" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>功夫熊猫
+	                    </td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">社交</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">1.0.9.3</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">17 MB</td>
+	                    <td style="height:40px;line-height:40px;text-align:center;">
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-xiugai.png"></img>
+	                         </a>
+	                         
+	                         &nbsp;&nbsp;&nbsp;
+	                         
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-shanchu.png"></img>
+	                         </a>
+	                         
+	                         &nbsp;&nbsp;&nbsp;
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-chaxuntongji.png"></img>
+	                         </a>
+	                    </td>
+	                  </tr>
+	                  <tr >
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
+	                        <span><img src="images/app_xiongmao.png" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>功夫熊猫
+	                    </td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">社交</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">1.0.9.3</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">17 MB</td>
+	                    <td style="height:40px;line-height:40px;text-align:center;">
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-xiugai.png"></img>
+	                         </a>
+	                         
+	                         &nbsp;&nbsp;&nbsp;
+	                         
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-shanchu.png"></img>
+	                         </a>
+	                         
+	                         &nbsp;&nbsp;&nbsp;
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-chaxuntongji.png"></img>
+	                         </a>
+	                    </td>
+	                  </tr>                  
+	                   <tr >
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
+	                        <span><img src="images/app_xiongmao.png" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>功夫熊猫
+	                    </td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">社交</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">1.0.9.3</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">17 MB</td>
+	                    <td style="height:40px;line-height:40px;text-align:center;">
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-xiugai.png"></img>
+	                         </a>
+	                         
+	                         &nbsp;&nbsp;&nbsp;
+	                         
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-shanchu.png"></img>
+	                         </a>
+	                         
+	                         &nbsp;&nbsp;&nbsp;
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-chaxuntongji.png"></img>
+	                         </a>
+	                    </td>
+	                  </tr>
+	                   <tr >
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
+	                        <span><img src="images/app_xiongmao.png" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>功夫熊猫
+	                    </td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">社交</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">1.0.9.3</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">17 MB</td>
+	                    <td style="height:40px;line-height:40px;text-align:center;">
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-xiugai.png"></img>
+	                         </a>
+	                         
+	                         &nbsp;&nbsp;&nbsp;
+	                         
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-shanchu.png"></img>
+	                         </a>
+	                         
+	                         &nbsp;&nbsp;&nbsp;
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-chaxuntongji.png"></img>
+	                         </a>
+	                    </td>
+	                  </tr>
+	                   <tr >
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
+	                        <span><img src="images/app_xiongmao.png" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>功夫熊猫
+	                    </td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">社交</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">1.0.9.3</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">17 MB</td>
+	                    <td style="height:40px;line-height:40px;text-align:center;">
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-xiugai.png"></img>
+	                         </a>
+	                         
+	                         &nbsp;&nbsp;&nbsp;
+	                         
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-shanchu.png"></img>
+	                         </a>
+	                         
+	                         &nbsp;&nbsp;&nbsp;
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-chaxuntongji.png"></img>
+	                         </a>
+	                    </td>
+	                  </tr>
+	                   <tr >
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
+	                        <span><img src="images/app_xiongmao.png" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>功夫熊猫
+	                    </td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">社交</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">1.0.9.3</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">17 MB</td>
+	                    <td style="height:40px;line-height:40px;text-align:center;">
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-xiugai.png"></img>
+	                         </a>
+	                         
+	                         &nbsp;&nbsp;&nbsp;
+	                         
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-shanchu.png"></img>
+	                         </a>
+	                         
+	                         &nbsp;&nbsp;&nbsp;
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-chaxuntongji.png"></img>
+	                         </a>
+	                    </td>
+	                  </tr>
+	                   <tr >
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
+	                        <span><img src="images/app_xiongmao.png" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>功夫熊猫
+	                    </td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">社交</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">1.0.9.3</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">17 MB</td>
+	                    <td style="height:40px;line-height:40px;text-align:center;">
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-xiugai.png"></img>
+	                         </a>
+	                         
+	                         &nbsp;&nbsp;&nbsp;
+	                         
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-shanchu.png"></img>
+	                         </a>
+	                         
+	                         &nbsp;&nbsp;&nbsp;
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-chaxuntongji.png"></img>
+	                         </a>
+	                    </td>
+	                  </tr>
+	                   <tr >
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
+	                        <span><img src="images/app_xiongmao.png" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>功夫熊猫
+	                    </td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">社交</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">1.0.9.3</td>
+	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">17 MB</td>
+	                    <td style="height:40px;line-height:40px;text-align:center;">
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-xiugai.png"></img>
+	                         </a>
+	                         
+	                         &nbsp;&nbsp;&nbsp;
+	                         
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-shanchu.png"></img>
+	                         </a>
+	                         
+	                         &nbsp;&nbsp;&nbsp;
+	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+	                             <img src="images/iconfont-chaxuntongji.png"></img>
+	                         </a>
+	                    </td>
+	                  </tr>
+	                </tbody>
+	              </table>
+	            </div>          
+	        </div>   <!--  table 的封装 -->
+	        
+	        <!-- 
+	        <div class="row">
+	          
+	          <div class="mistat-table-bottom"><div class="mistat-pagination"><div class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers" id="DataTables_Table_0_paginate"><a class="fg-button ui-button ui-state-default first ui-state-disabled" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" id="DataTables_Table_0_first">第一页</a><a class="fg-button ui-button ui-state-default previous ui-state-disabled" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0" id="DataTables_Table_0_previous">上一页</a><span><a class="fg-button ui-button ui-state-default ui-state-disabled"  style="background-color:#428bca;border:0px;" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0">1</a><a class="fg-button ui-button ui-state-default " aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0">2</a></span><a class="fg-button ui-button ui-state-default next" aria-controls="DataTables_Table_0" data-dt-idx="4" tabindex="0" id="DataTables_Table_0_next">下一页</a><a class="fg-button ui-button ui-state-default last" aria-controls="DataTables_Table_0" data-dt-idx="5" tabindex="0" id="DataTables_Table_0_last">最后一页</a></div></div></div>
+	          
+	        </div>
+	         -->
+	
+	          <!-- 
+	          <div class="row placeholders">
+	            <div class="col-xs-6 col-sm-3 placeholder">
+	              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="200x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzBEOEZEQiIvPjxnPjx0ZXh0IHg9Ijc1LjUiIHk9IjEwMCIgc3R5bGU9ImZpbGw6I0ZGRkZGRjtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjIwMHgyMDA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
+	              <h4>Label</h4>
+	              <span class="text-muted">Something else</span>
+	            </div>
+	            <div class="col-xs-6 col-sm-3 placeholder">
+	              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="200x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzM5REJBQyIvPjxnPjx0ZXh0IHg9Ijc1LjUiIHk9IjEwMCIgc3R5bGU9ImZpbGw6IzFFMjkyQztmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjIwMHgyMDA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
+	              <h4>Label</h4>
+	              <span class="text-muted">Something else</span>
+	            </div>
+	            <div class="col-xs-6 col-sm-3 placeholder">
+	              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="200x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzBEOEZEQiIvPjxnPjx0ZXh0IHg9Ijc1LjUiIHk9IjEwMCIgc3R5bGU9ImZpbGw6I0ZGRkZGRjtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjIwMHgyMDA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
+	              <h4>Label</h4>
+	              <span class="text-muted">Something else</span>
+	            </div>
+	            <div class="col-xs-6 col-sm-3 placeholder">
+	              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="200x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzM5REJBQyIvPjxnPjx0ZXh0IHg9Ijc1LjUiIHk9IjEwMCIgc3R5bGU9ImZpbGw6IzFFMjkyQztmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjIwMHgyMDA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
+	              <h4>Label</h4>
+	              <span class="text-muted">Something else</span>
+	            </div>
+	          </div>
+	
+	          <h2 class="sub-header">应用管理</h2>
+	           -->
+	          <div class="row">
+	            
+	          </div>
+	           
+	        </div>
       </div>
     </div>
 
