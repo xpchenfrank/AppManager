@@ -59,47 +59,47 @@ public class AppController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addApp(HttpServletRequest request, Model model) throws Exception {
         
-    	//获取table其他参数
-    	String appCat = ServletRequestUtils.getStringParameter(request, "appCat");
-    	String appDisplayName = ServletRequestUtils.getStringParameter(request, "appDisplayName");
-    	String appFileName = ServletRequestUtils.getStringParameter(request, "appFileName");
-    	String appShortDesc = ServletRequestUtils.getStringParameter(request, "appShortDesc");
-    	String appVersion = ServletRequestUtils.getStringParameter(request, "appVersion");
-    	//String appIcon = ServletRequestUtils.getStringParameter(request, "appIcon");
-    	//String appFile = ServletRequestUtils.getStringParameter(request, "appFile");
-    	String[] appTag = ServletRequestUtils.getStringParameters(request, "appTag");
-    	
-    	
-    	//先从request里面获取到两个文件
+        //获取table其他参数
+        String appCat = ServletRequestUtils.getStringParameter(request, "appCat");
+        String appDisplayName = ServletRequestUtils.getStringParameter(request, "appDisplayName");
+        String appFileName = ServletRequestUtils.getStringParameter(request, "appFileName");
+        String appShortDesc = ServletRequestUtils.getStringParameter(request, "appShortDesc");
+        String appVersion = ServletRequestUtils.getStringParameter(request, "appVersion");
+        //String appIcon = ServletRequestUtils.getStringParameter(request, "appIcon");
+        //String appFile = ServletRequestUtils.getStringParameter(request, "appFile");
+        String[] appTag = ServletRequestUtils.getStringParameters(request, "appTag");
+        
+        
+        //先从request里面获取到两个文件
         MultipartHttpServletRequest mRequest = (MultipartHttpServletRequest) request;
         Map<String, MultipartFile> fileMap = mRequest.getFileMap();
         
         MultipartFile appIcon = fileMap.get("appIcon");
         MultipartFile appFile = fileMap.get("appFile");
         
-    	App app = new App();
-    	app.setDisplayname(appDisplayName);
-    	app.setFilename(appFileName);
-    	app.setVersion(appVersion);
-    	app.setShortDesc(appShortDesc);
-    	
-    	//根据category找具体的实体类
-    	Category aCat = aAppDAO.findCatByName(appCat);
-    	if(aCat != null) {
-    		Set<Category> cats = new HashSet<Category>();
-        	cats.add(aCat);
-    		app.setCats(cats);
-    	}
-    	
-    	//根据Tag的名字找Tag
-    	List<Tag> tags = aAppDAO.findTagsByNames(appTag);
-    	if(tags != null && tags.size() > 0) {
-    		Set<Tag> tagSet = new HashSet<Tag>();
-    		for(Tag aTag : tags) {
-    			tagSet.add(aTag);
-    		}
-    		app.setTags(tagSet);
-    	}
+        App app = new App();
+        app.setDisplayname(appDisplayName);
+        app.setFilename(appFileName);
+        app.setVersion(appVersion);
+        app.setShortDesc(appShortDesc);
+        
+        //根据category找具体的实体类
+        Category aCat = aAppDAO.findCatByName(appCat);
+        if(aCat != null) {
+            Set<Category> cats = new HashSet<Category>();
+            cats.add(aCat);
+            app.setCats(cats);
+        }
+        
+        //根据Tag的名字找Tag
+        List<Tag> tags = aAppDAO.findTagsByNames(appTag);
+        if(tags != null && tags.size() > 0) {
+            Set<Tag> tagSet = new HashSet<Tag>();
+            for(Tag aTag : tags) {
+                tagSet.add(aTag);
+            }
+            app.setTags(tagSet);
+        }
         
         gService.addApp(request, app, appIcon, appFile);
         
@@ -111,29 +111,29 @@ public class AppController {
     @RequestMapping(value = "/uploadAppIcon", method = RequestMethod.POST)
     public String uploadAppIcon(HttpServletRequest req, HttpServletResponse resp, Model model) throws Exception {
         
-    	//获取table其他参数
-    	String appCat = ServletRequestUtils.getStringParameter(req, "appCat");
-    	String appDisplayName = ServletRequestUtils.getStringParameter(req, "appDisplayName");
-    	String appFileName = ServletRequestUtils.getStringParameter(req, "appFileName");
-    	String appShortDesc = ServletRequestUtils.getStringParameter(req, "appShortDesc");
-    	String appVersion = ServletRequestUtils.getStringParameter(req, "appVersion");
-    	String[] appTag = ServletRequestUtils.getStringParameters(req, "appTag");
-    	
-    	
-    	//先从request里面获取到两个文件
+        //获取table其他参数
+        String appCat = ServletRequestUtils.getStringParameter(req, "appCat");
+        String appDisplayName = ServletRequestUtils.getStringParameter(req, "appDisplayName");
+        String appFileName = ServletRequestUtils.getStringParameter(req, "appFileName");
+        String appShortDesc = ServletRequestUtils.getStringParameter(req, "appShortDesc");
+        String appVersion = ServletRequestUtils.getStringParameter(req, "appVersion");
+        String[] appTag = ServletRequestUtils.getStringParameters(req, "appTag");
+        
+        
+        //先从request里面获取到两个文件
         MultipartHttpServletRequest mRequest = (MultipartHttpServletRequest) req;
         Map<String, MultipartFile> fileMap = mRequest.getFileMap();
         
         MultipartFile appIcon = fileMap.get("appIcon");
         
         FileOperateUtil.upload(req, appIcon,
-        		appFileName, "appIcon", appVersion);
+                appFileName, "appIcon", appVersion);
         
         JSONObject jsonData = new JSONObject();
         jsonData.put("path", "testPath");
         
         //最后要返回json
-		resp.addHeader("Pragma", "no-cache");
+        resp.addHeader("Pragma", "no-cache");
         resp.setHeader("Cache-Control","no-cache");
         resp.setHeader("Expires", "0");
         resp.setContentType("text/html;charset=UTF-8");
@@ -141,52 +141,52 @@ public class AppController {
         String fileName = FileOperateUtil.renameStoreFileName(appIcon.getOriginalFilename(), appFileName, appVersion);
         
         PrintWriter out;
-		try {
-			out = resp.getWriter();
-			out.print("{'path' : 'appIcon/"+ fileName +"'}");
-			out.flush();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        try {
+            out = resp.getWriter();
+            out.print("{'path' : 'appIcon/"+ fileName +"'}");
+            out.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         
         return null;
     }
     
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String showAddApp(Model model, String test, String uploadSuccessful) {
-    	
-    	if(uploadSuccessful != null && uploadSuccessful.equals("true")) {
-    		model.addAttribute("uploadSuccessful", "true");
-    	}
-    	
-    	//获取所有可选的类别
-    	List<Category> cats = aAppDAO.findAllCat();
-    	
-    	model.addAttribute("cats", cats);
-    	
-    	//获取所有的可选Tag
-    	List<Tag> tags = aAppDAO.findAllTag();
-    	
-    	model.addAttribute("tags", tags);
-    	
-    	return "uploadApp";
+        
+        if(uploadSuccessful != null && uploadSuccessful.equals("true")) {
+            model.addAttribute("uploadSuccessful", "true");
+        }
+        
+        //获取所有可选的类别
+        List<Category> cats = aAppDAO.findAllCat();
+        
+        model.addAttribute("cats", cats);
+        
+        //获取所有的可选Tag
+        List<Tag> tags = aAppDAO.findAllTag();
+        
+        model.addAttribute("tags", tags);
+        
+        return "uploadApp";
     }
     
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String showApp(Model model) {
-    	
-    	//获取所有可选的类别
-    	List<Category> cats = aAppDAO.findAllCat();
-    	
-    	model.addAttribute("cats", cats);
-    	
-    	/*
-    	for(Category tempCat : cats) {
-    		System.out.println(tempCat.getName());
-    	}
-    	*/
-    	
-    	return "admin";
+        
+        //获取所有可选的类别
+        List<Category> cats = aAppDAO.findAllCat();
+        
+        model.addAttribute("cats", cats);
+        
+        /*
+        for(Category tempCat : cats) {
+            System.out.println(tempCat.getName());
+        }
+        */
+        
+        return "admin";
     }
     
 }
