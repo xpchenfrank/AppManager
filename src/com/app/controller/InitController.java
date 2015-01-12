@@ -20,7 +20,7 @@ import com.app.model.Tag;
 import com.app.service.GeneralService;
 
 /**
- * 这个是用来生成初始化数据的类  测试git的中文问题
+ * 这个是用来生成初始化数据的类  测试git的中文问题 再次测试  再次测试GIT中文
  * 
  * http://localhost:8080/AppManager/am/init/createCat
  * http://localhost:8080/AppManager/am/init/createTag
