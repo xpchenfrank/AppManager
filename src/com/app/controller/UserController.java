@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.app.dao.UserDAO;
+import com.app.model.Category;
 import com.app.util.CXPUtils;
 
 @Controller
@@ -44,6 +45,13 @@ public class UserController {
         */
         return "index";
     } 
-
+    
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public String showUser(HttpServletRequest req, Model model) {
+        
+        req.setAttribute("currentPage", "user");
+        
+        return "manageUser";
+    }
 
 }

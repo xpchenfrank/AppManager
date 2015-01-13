@@ -98,6 +98,7 @@ body {
 	margin-left: -20px;
 }
 
+
 .nav-sidebar>.active>a,.nav-sidebar>.active>a:hover,.nav-sidebar>.active>a:focus
 	{
 	color: #fff;
@@ -138,7 +139,7 @@ body {
 			<%@ include file="/jsp/adminSidebar.jsp"%>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-				<h1 class="page-header" style="font-size: 20px; margin-left: -15px;">上传应用</h1>
+				<h1 class="page-header" style="font-size: 20px; margin-left: -15px;">管理用户</h1>
 
 				<form class="form-horizontal" role="form"
 					enctype="multipart/form-data"

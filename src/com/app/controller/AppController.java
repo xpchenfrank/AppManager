@@ -1,13 +1,8 @@
 package com.app.controller;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -19,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -173,12 +167,14 @@ public class AppController {
     }
     
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String showApp(Model model) {
+    public String showApp(HttpServletRequest req, Model model) {
         
         //获取所有可选的类别
         List<Category> cats = aAppDAO.findAllCat();
         
         model.addAttribute("cats", cats);
+        
+        req.setAttribute("currentPage", "app");
         
         /*
         for(Category tempCat : cats) {
