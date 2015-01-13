@@ -20,7 +20,7 @@ import com.app.model.Tag;
 import com.app.service.GeneralService;
 
 /**
- * 这个是用来生成初始化数据的类
+ * 这个是用来生成初始化数据的类  测试git的中文问题 再次测试  再次测试GIT中文
  * 
  * http://localhost:8080/AppManager/am/init/createCat
  * http://localhost:8080/AppManager/am/init/createTag
@@ -51,24 +51,24 @@ public class InitController {
     @RequestMapping(value = "/createCat", method = RequestMethod.GET)
     public String createCategories(Model model) {
         
-    	String[] categories = {"社交", "视频", "阅读", "音乐", "生活", "系统", "安全"};
-    	
+        String[] categories = {"社交", "视频", "阅读", "音乐", "生活", "系统", "安全"};
+        
         for(String tempStr : categories) {
-        	aAppDAO.upsertCat(tempStr);
+            aAppDAO.upsertCat(tempStr);
         }
-    	
+        
         return null;
     }
     
     @RequestMapping(value = "/createTag", method = RequestMethod.GET)
     public String createTags(Model model) {
         
-    	String[] tags = {"结算", "推荐", "精品", "高富帅", "白富美"};
-    	
+        String[] tags = {"结算", "推荐", "精品", "高富帅", "白富美"};
+        
         for(String tempStr : tags) {
-        	aAppDAO.upsertTag(tempStr);
+            aAppDAO.upsertTag(tempStr);
         }
-    	
+        
         return null;
     }
     
