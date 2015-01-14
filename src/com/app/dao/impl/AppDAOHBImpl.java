@@ -44,8 +44,9 @@ public class AppDAOHBImpl extends HibernateDaoSupport implements AppDAO {
 	}
 
 	@Override
-	public void findAppByCat(String catName) {
-		List<App> rooms = getHibernateTemplate().find(" from AM_APP as app right join Department as department on employee.DepNo=department.ID ");
+	public List<App> findAppByCat(String catName) {
+		List<App> apps = getHibernateTemplate().find(" from App as app inner join app.cats as cat where cat.name='ç¤¾äº¤'");
+		return apps;
 	}
 
 	@Override
@@ -103,10 +104,10 @@ public class AppDAOHBImpl extends HibernateDaoSupport implements AppDAO {
 	public List<Tag> findTagsByNames(String[] tags) {
 		
 		List<String> tagList = new ArrayList<String> ();
-		tagList.add("ÍÆ¼ö");
-		tagList.add("¾«Æ·");
+		tagList.add("ï¿½Æ¼ï¿½");
+		tagList.add("ï¿½ï¿½Æ·");
 		
-		String[] testArray ={"¾«Æ·", "ÍÆ¼ö", "²âÊÔ"}; 
+		String[] testArray ={"ï¿½ï¿½Æ·", "ï¿½Æ¼ï¿½", "ï¿½ï¿½ï¿½ï¿½"}; 
 		
 		List<Tag> tagsList = getHibernateTemplate().find("from Tag tag where tag.deleted=false and tag.name in " + CXPUtils.toInClause(testArray) );
 		

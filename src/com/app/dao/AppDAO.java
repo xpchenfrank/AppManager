@@ -10,7 +10,7 @@ import com.app.model.Category;
 import com.app.model.Tag;
 
 /**
- *  APP DAO Í¬Ê±·ÅÕë¶Ô APP ºÍ Category µÄDAO ·½·¨
+ *  APP DAO Í¬Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ APP ï¿½ï¿½ Category ï¿½ï¿½DAO ï¿½ï¿½ï¿½ï¿½
  */
 @Component
 public interface AppDAO {
@@ -19,7 +19,7 @@ public interface AppDAO {
     
     public void insertApp(App anApp);
     
-    public void findAppByCat (String catName);
+    public List<App> findAppByCat (String catName);
     
     public void findAllApp ();
     

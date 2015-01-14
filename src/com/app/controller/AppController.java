@@ -53,6 +53,8 @@ public class AppController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addApp(HttpServletRequest request, Model model) throws Exception {
         
+        request.setAttribute("currentPage", "app");
+        
         //获取table其他参数
         String appCat = ServletRequestUtils.getStringParameter(request, "appCat");
         String appDisplayName = ServletRequestUtils.getStringParameter(request, "appDisplayName");
@@ -176,6 +178,9 @@ public class AppController {
         
         req.setAttribute("currentPage", "app");
         
+        List<App> apps = aAppDAO.findAppByCat("社交");
+        
+        model.addAttribute("apps", apps);
         /*
         for(Category tempCat : cats) {
             System.out.println(tempCat.getName());
