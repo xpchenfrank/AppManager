@@ -17,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.app.util.FileOperateUtil;
+
 /**
  * 
  * 2015-1-10
@@ -31,15 +33,15 @@ public class App {
     @Column(name="id")
     private long id;
     
-    //display name ÊÇÔÚÇ°Ì¨ÏÔÊ¾ÓÃµÄÃû×Ö ÀıÈç Î¢ĞÅ£¬Î¢²©
+    //display name æ˜¯åœ¨å‰å°æ˜¾ç¤ºç”¨çš„åå­— ä¾‹å¦‚ å¾®ä¿¡ï¼Œå¾®åš
     @Column(name="displayname")
     private String displayname;
     
-    //filenameÊÇºóÌ¨Â·¾¶ÖĞÕæÕı´æ´¢µÄname ÀıÈç weixin_1898.apk
+    //filenameæ˜¯åå°è·¯å¾„ä¸­çœŸæ­£å­˜å‚¨çš„name ä¾‹å¦‚ weixin_1898.apk
     @Column(name="filename", unique = true, nullable = false)
     private String filename;
     
-    //appµÄ°æ±¾ºÅ ÀıÈç1.8.9.8
+    //appçš„ç‰ˆæœ¬å· ä¾‹å¦‚1.8.9.8
     @Column(name="version")
     private String version;
     
@@ -59,6 +61,12 @@ public class App {
     
     @Column(name="deleted", columnDefinition="BOOLEAN default false")
     private boolean deleted;
+    
+    @Column(name="iconpath")
+    private String iconPath;
+    
+    @Column(name="filesize")
+    private String fileSize;
     
     public App() {
         
@@ -134,6 +142,22 @@ public class App {
 
     public void setLongDesc(String longDesc) {
         this.longDesc = longDesc;
+    }
+
+    public String getIconPath() {
+        return iconPath;
+    }
+
+    public void setIconPath(String iconPath) {
+        this.iconPath = iconPath;
+    }
+
+    public String getFileSize() {
+        return fileSize;
+    }
+
+    public void setFileSize(String fileSize) {
+        this.fileSize = fileSize;
     }
     
 }

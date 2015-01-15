@@ -45,13 +45,14 @@ public class AppDAOHBImpl extends HibernateDaoSupport implements AppDAO {
 
 	@Override
 	public List<App> findAppByCat(String catName) {
-		List<App> apps = getHibernateTemplate().find(" from App as app inner join app.cats as cat where cat.name='社交'");
+		List<App> apps = getHibernateTemplate().find(" from App as app left join app.cats as cat where cat.name=? and app.deleted=false and cat.deleted=false" , catName);
 		return apps;
 	}
 
 	@Override
-	public void findAllApp() {
-		List<App> rooms = getHibernateTemplate().find("from AM_APP");
+	public List<App> findAllApp() {
+		List<App> apps = getHibernateTemplate().find("from App where App.deleted=false");
+		return apps;
 	}
 
 	@Override

@@ -21,7 +21,7 @@ public interface AppDAO {
     
     public List<App> findAppByCat (String catName);
     
-    public void findAllApp ();
+    public List<App> findAllApp ();
     
     // Category Start
     public Category findCatByName(String catName);

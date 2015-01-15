@@ -2,6 +2,8 @@ package com.app.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.alibaba.fastjson.JSONObject;
 import com.app.dao.AppDAO;
 import com.app.dao.NodeDAO;
 import com.app.dao.UserDAO;
@@ -28,7 +29,9 @@ import com.app.model.App;
 import com.app.model.Category;
 import com.app.model.Tag;
 import com.app.service.GeneralService;
+import com.app.util.CXPUtils;
 import com.app.util.FileOperateUtil;
+import com.google.gson.JsonObject;
 
 @Controller
 @RequestMapping("/app")
@@ -55,7 +58,7 @@ public class AppController {
         
         request.setAttribute("currentPage", "app");
         
-        //»ñÈ¡tableÆäËû²ÎÊı
+        //è·å–tableå…¶ä»–å‚æ•°
         String appCat = ServletRequestUtils.getStringParameter(request, "appCat");
         String appDisplayName = ServletRequestUtils.getStringParameter(request, "appDisplayName");
         String appFileName = ServletRequestUtils.getStringParameter(request, "appFileName");
@@ -64,9 +67,10 @@ public class AppController {
         //String appIcon = ServletRequestUtils.getStringParameter(request, "appIcon");
         //String appFile = ServletRequestUtils.getStringParameter(request, "appFile");
         String[] appTag = ServletRequestUtils.getStringParameters(request, "appTag");
+        String iconPath = ServletRequestUtils.getStringParameter(request, "iconPath");
+        System.out.println("iconPath is " + iconPath);
         
-        
-        //ÏÈ´ÓrequestÀïÃæ»ñÈ¡µ½Á½¸öÎÄ¼ş
+        //å…ˆä»requesté‡Œé¢è·å–åˆ°ä¸¤ä¸ªæ–‡ä»¶
         MultipartHttpServletRequest mRequest = (MultipartHttpServletRequest) request;
         Map<String, MultipartFile> fileMap = mRequest.getFileMap();
         
@@ -78,8 +82,17 @@ public class AppController {
         app.setFilename(appFileName);
         app.setVersion(appVersion);
         app.setShortDesc(appShortDesc);
+        app.setIconPath(iconPath);
+        System.out.println("æ–‡ä»¶å¤§å°æ˜¯ " + appFile.getSize());
+        long fileSizeLong = appFile.getSize(); 
+        if(fileSizeLong >= 0) {
+            double mbSize = fileSizeLong / 1024.0 / 1024.0;
+            String fileSize = String.format("%.2f", mbSize) + " MB";
+            app.setFileSize(fileSize);
+        }
+        //app.setFileSize();
         
-        //¸ù¾İcategoryÕÒ¾ßÌåµÄÊµÌåÀà
+        //æ ¹æ®categoryæ‰¾å…·ä½“çš„å®ä½“ç±»
         Category aCat = aAppDAO.findCatByName(appCat);
         if(aCat != null) {
             Set<Category> cats = new HashSet<Category>();
@@ -87,7 +100,7 @@ public class AppController {
             app.setCats(cats);
         }
         
-        //¸ù¾İTagµÄÃû×ÖÕÒTag
+        //æ ¹æ®Tagçš„åå­—æ‰¾Tag
         List<Tag> tags = aAppDAO.findTagsByNames(appTag);
         if(tags != null && tags.size() > 0) {
             Set<Tag> tagSet = new HashSet<Tag>();
@@ -107,7 +120,7 @@ public class AppController {
     @RequestMapping(value = "/uploadAppIcon", method = RequestMethod.POST)
     public String uploadAppIcon(HttpServletRequest req, HttpServletResponse resp, Model model) throws Exception {
         
-        //»ñÈ¡tableÆäËû²ÎÊı
+        //è·å–tableå…¶ä»–å‚æ•°
         String appCat = ServletRequestUtils.getStringParameter(req, "appCat");
         String appDisplayName = ServletRequestUtils.getStringParameter(req, "appDisplayName");
         String appFileName = ServletRequestUtils.getStringParameter(req, "appFileName");
@@ -116,7 +129,7 @@ public class AppController {
         String[] appTag = ServletRequestUtils.getStringParameters(req, "appTag");
         
         
-        //ÏÈ´ÓrequestÀïÃæ»ñÈ¡µ½Á½¸öÎÄ¼ş
+        //å…ˆä»requesté‡Œé¢è·å–åˆ°ä¸¤ä¸ªæ–‡ä»¶
         MultipartHttpServletRequest mRequest = (MultipartHttpServletRequest) req;
         Map<String, MultipartFile> fileMap = mRequest.getFileMap();
         
@@ -125,10 +138,7 @@ public class AppController {
         FileOperateUtil.upload(req, appIcon,
                 appFileName, "appIcon", appVersion);
         
-        JSONObject jsonData = new JSONObject();
-        jsonData.put("path", "testPath");
-        
-        //×îºóÒª·µ»Øjson
+        //æœ€åè¦è¿”å›json
         resp.addHeader("Pragma", "no-cache");
         resp.setHeader("Cache-Control","no-cache");
         resp.setHeader("Expires", "0");
@@ -136,10 +146,14 @@ public class AppController {
         
         String fileName = FileOperateUtil.renameStoreFileName(appIcon.getOriginalFilename(), appFileName, appVersion);
         
+        JsonObject jsonGObj = new JsonObject();
+        jsonGObj.addProperty("path", "appIcon/" + fileName);
+        System.out.println(jsonGObj.toString());
+        
         PrintWriter out;
         try {
             out = resp.getWriter();
-            out.print("{'path' : 'appIcon/"+ fileName +"'}");
+            out.print(jsonGObj.toString());
             out.flush();
         } catch (IOException e) {
             e.printStackTrace();
@@ -149,18 +163,20 @@ public class AppController {
     }
     
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String showAddApp(Model model, String test, String uploadSuccessful) {
+    public String showAddApp(HttpServletRequest req, Model model, String test, String uploadSuccessful) {
+        
+        req.setAttribute("currentPage", "app");
         
         if(uploadSuccessful != null && uploadSuccessful.equals("true")) {
             model.addAttribute("uploadSuccessful", "true");
         }
         
-        //»ñÈ¡ËùÓĞ¿ÉÑ¡µÄÀà±ğ
+        //è·å–æ‰€æœ‰å¯é€‰çš„ç±»åˆ«
         List<Category> cats = aAppDAO.findAllCat();
         
         model.addAttribute("cats", cats);
         
-        //»ñÈ¡ËùÓĞµÄ¿ÉÑ¡Tag
+        //è·å–æ‰€æœ‰çš„å¯é€‰Tag
         List<Tag> tags = aAppDAO.findAllTag();
         
         model.addAttribute("tags", tags);
@@ -169,16 +185,34 @@ public class AppController {
     }
     
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String showApp(HttpServletRequest req, Model model) {
+    public String showApp(HttpServletRequest req, HttpServletResponse resp, Model model) throws UnsupportedEncodingException {
         
-        //»ñÈ¡ËùÓĞ¿ÉÑ¡µÄÀà±ğ
+        CXPUtils.setAjaxHeader(req, resp, "html");
+        
+        //è·å–æ‰€æœ‰å¯é€‰çš„ç±»åˆ«
         List<Category> cats = aAppDAO.findAllCat();
         
         model.addAttribute("cats", cats);
         
         req.setAttribute("currentPage", "app");
         
-        List<App> apps = aAppDAO.findAppByCat("Éç½»");
+        List<App> apps = new ArrayList<App>();
+        
+        String sCat = req.getParameter("sCat");
+        
+        if(sCat != null) {
+            String sCatUTF8 = CXPUtils.changeCharset(sCat, "UTF-8");
+            
+            if(sCat.equals("å…¨éƒ¨")) {
+                System.out.println(11111);
+            }
+            
+            if(sCat.equals(CXPUtils.changeCharset("å…¨éƒ¨", "utf-8"))) {
+                apps = aAppDAO.findAllApp();
+            } else {
+                apps = aAppDAO.findAppByCat(sCatUTF8);     
+            }
+        }
         
         model.addAttribute("apps", apps);
         /*

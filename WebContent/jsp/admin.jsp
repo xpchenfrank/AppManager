@@ -121,24 +121,21 @@
 			<div class="row">
 			
 			  <div class="col-xs-2">
-			   <button type="submit" class="btn btn-primary"><img src="images/iconfont-xinjian.png" style="margin-top: -3px;margin-right: 6px;"></img>上传应用</button>
+			   <button type="submit" class="btn btn-primary" onclick="window.location.href='am/app/add'"><img src="images/iconfont-xinjian.png" style="margin-top: -3px;margin-right: 6px;"></img>上传应用</button>
 	          </div>
 			  
 			  <div class="col-xs-2" style="margin-left: -20px;">
-			    <select class="form-control col-xs-3">
-	              <option>请选择分类</option>
-	              <option>1</option>
-	              <option>2</option>
-	              <option>3</option>
-	              <option>4</option>
-	              <option>5</option>
+			    <select class="form-control col-xs-3" name="appCat">
+	              <c:forEach items="${cats}" var="cat" varStatus="status">
+                      <option>${cat.name}</option>
+                  </c:forEach>
 	            </select>
 			  </div>
 			  <div class="col-xs-3">
-			    <input type="text" class="form-control" placeholder="请输入关键字"/>
+			    <input type="text" class="form-control" placeholder="请输入关键字" name="keyword"/>
 			  </div>
 			  <div class="col-xs-4">
-			    <button type="submit" class="btn btn-default">查询</button>
+			    <button type="submit" class="btn btn-default" onclick="window.location.href='am/app/search';">查询</button>
 			  </div>
 	           
 	        </div>
@@ -158,6 +155,62 @@
 	                  </tr>
 	                </thead>
 	                <tbody>
+		                <c:forEach items="${apps}" var="app" varStatus="obj">  
+						  <c:if test="${obj.count%2 == '0'}">  
+							  <tr >
+		                        <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
+		                        <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
+		                            <span><img src="${app[0].iconPath}" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>${app[0].displayname}
+		                        </td>
+		                        <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">${app[1].name}</td>
+		                        <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">${app[0].version}</td>
+		                        <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">${app[0].fileSize}</td>
+		                        <td style="height:40px;line-height:40px;text-align:center;">
+		                             <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+		                                 <img src="images/iconfont-xiugai.png"></img>
+		                             </a>
+		                             
+		                             &nbsp;&nbsp;&nbsp;
+		                             
+		                             <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+		                                 <img src="images/iconfont-shanchu.png"></img>
+		                             </a>
+		                             
+		                             &nbsp;&nbsp;&nbsp;
+		                             <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+		                                 <img src="images/iconfont-chaxuntongji.png"></img>
+		                             </a>
+		                        </td>
+		                      </tr>
+						  </c:if>  
+						  <c:if test="${obj.count%2 != '0'}">  
+							 <tr >
+		                        <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
+		                        <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
+		                            <span><img src="${app[0].iconPath}" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>${app[0].displayname}
+		                        </td>
+		                        <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">${app[1].name}</td>
+		                        <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">${app[0].version}</td>
+		                        <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">${app[0].fileSize}</td>
+		                        <td style="height:40px;line-height:40px;text-align:center;">
+		                             <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+		                                 <img src="images/iconfont-xiugai.png"></img>
+		                             </a>
+		                             
+		                             &nbsp;&nbsp;&nbsp;
+		                             
+		                             <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+		                                 <img src="images/iconfont-shanchu.png"></img>
+		                             </a>
+		                             
+		                             &nbsp;&nbsp;&nbsp;
+		                             <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
+		                                 <img src="images/iconfont-chaxuntongji.png"></img>
+		                             </a>
+		                        </td>
+		                      </tr>  
+						  </c:if>  
+						</c:forEach>
 	                  <tr >
 	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
 	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">

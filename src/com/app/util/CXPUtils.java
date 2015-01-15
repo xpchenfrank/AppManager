@@ -28,21 +28,38 @@ public class CXPUtils {
     
     
     public static String toInClause(String[] strArray) {
-    	StringBuffer strBuffer = new StringBuffer();
-    	strBuffer.append("(");
-    	for(String temp : strArray) {
-    		strBuffer.append("'"+temp+"'");
-    		strBuffer.append(",");
-    	}
-    	strBuffer.deleteCharAt(strBuffer.lastIndexOf(","));
-    	strBuffer.append(")");
-    	return strBuffer.toString();
+        StringBuffer strBuffer = new StringBuffer();
+        strBuffer.append("(");
+        for(String temp : strArray) {
+            strBuffer.append("'"+temp+"'");
+            strBuffer.append(",");
+        }
+        strBuffer.deleteCharAt(strBuffer.lastIndexOf(","));
+        strBuffer.append(")");
+        return strBuffer.toString();
     }
     
-    public static void main(String[] args) {
-    	String[] testArray ={"Èöµ©·ÉÈ÷", "Ë®µç·Ñ", "Èöµ©·ÉÈ÷"};
-    	System.out.println(toInClause(testArray));
-	}
+    public static String changeCharset(String str, String newCharset)
+            throws UnsupportedEncodingException {
+        if (str != null) {
+            // ç”¨é»˜è®¤å­—ç¬¦ç¼–ç è§£ç å­—ç¬¦ä¸²ã€‚
+            byte[] bs = str.getBytes();
+            // ç”¨æ–°çš„å­—ç¬¦ç¼–ç ç”Ÿæˆå­—ç¬¦ä¸²
+            return new String(bs, newCharset);
+        }
+        return null;
+    }
+    
+    public static void main(String[] args) throws UnsupportedEncodingException {
+        String str = "å…¨éƒ¨";
+        String strUTF = CXPUtils.changeCharset(str, "UTF-8");
+        
+        if(strUTF.equals(CXPUtils.changeCharset("å…¨éƒ¨", "UTF-8"))) {
+            System.out.println("æƒ³ç­‰çš„");
+        } else {
+            System.out.println("ä¸æƒ³ç­‰");
+        }
+    }
     
 
 }

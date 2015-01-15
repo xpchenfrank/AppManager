@@ -65,6 +65,10 @@ function ajaxUploadProduct(targetFileInputId) {
 			// var url="<%=pageContext.getAttribute("jsAssetsDir")%>"+"/interaction/sungoodspic/small/"+data.fileName;
 			$("#previewDiv").css("display", "block");
 			$("#previewImg").attr("src", data.path);
+			
+			$("#iconPath").val(data.path);
+			//设置隐藏域里的iconPath
+			//alert('1111' + data.iconPath);
 			/*
 			$("#mask" + suffix).css("display", "none");
 			$("#desc" + suffix).css("display", "none");

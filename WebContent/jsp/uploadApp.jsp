@@ -213,21 +213,14 @@ body {
 							<img id="previewImg" src="" style="width: 60px; height: 60px;"></img>
 						</div>
 					</div>
+					
+					<!-- 文件图标的路径  -->
+					<input type="hidden" value="" id="iconPath" name="iconPath"></input>
 
 					<div class="row tableLine"></div>
                     
-                    <script type="text/javascript">
-    
-				        function showRentWindow() {
-				            
-				            alert("1");
-				        }
-				        
-				    </script>
-                    
-                    
 					<div class="form-group">
-						<label for="inputEmail3" class="col-sm-2 control-label" onclick="showRentWindow();">应用文件:</label>
+						<label for="inputEmail3" class="col-sm-2 control-label" >应用文件:</label>
 						<div class="col-sm-5">
 							<input type="text" class="inputText" name="upfileAppFile"
 								id="upfileAppFile" readonly> <input type="button"

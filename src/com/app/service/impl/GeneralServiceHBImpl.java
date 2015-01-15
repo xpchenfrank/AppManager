@@ -20,13 +20,13 @@ import com.app.util.FileOperateUtil;
 
 public class GeneralServiceHBImpl implements GeneralService {
 
-	@Autowired
-	private NodeDAO aNodeDAO;
-	
-	@Autowired
+    @Autowired
+    private NodeDAO aNodeDAO;
+    
+    @Autowired
     private UserDAO aUserDAO;
-	
-	@Autowired
+    
+    @Autowired
     private AppDAO aAppDAO;
 
     @Override
@@ -42,7 +42,7 @@ public class GeneralServiceHBImpl implements GeneralService {
         aUser.setName("shen");
         
         Node aNode = new Node();
-        aNode.setName("中山路营业厅");
+        aNode.setName("涓北璺惀涓氬巺");
         Set<User> users = new HashSet<User>();
         users.add(aUser);
         aNode.setUsers(users);
@@ -59,23 +59,23 @@ public class GeneralServiceHBImpl implements GeneralService {
         
     }
 
-	@Override
-	public void updateNode() {
-		
-	}
+    @Override
+    public void updateNode() {
+        
+    }
 
-	@Override
-	public void addApp(HttpServletRequest req, App app, MultipartFile appIcon, MultipartFile appFile) throws Exception {
-		
-		//上传图标
-    	FileOperateUtil.upload(req, appIcon,
-    			app.getFilename(), "appIcon", app.getVersion());
-		
-		//上传app安装文件
-    	FileOperateUtil.upload(req, appFile,
-    			app.getFilename(), "appFile", app.getVersion());
-    			
-    	aAppDAO.insertApp(app);
-		
-	}
+    @Override
+    public void addApp(HttpServletRequest req, App app, MultipartFile appIcon, MultipartFile appFile) throws Exception {
+        
+        //涓婁紶鍥炬爣
+        FileOperateUtil.upload(req, appIcon,
+                app.getFilename(), "appIcon", app.getVersion());
+        
+        //涓婁紶app瀹夎鏂囦欢
+        FileOperateUtil.upload(req, appFile,
+                app.getFilename(), "appFile", app.getVersion());
+                
+        aAppDAO.insertApp(app);
+        
+    }
 }

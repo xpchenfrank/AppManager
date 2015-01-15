@@ -38,7 +38,7 @@
         style="top: 49px; padding: 0px 20px 20px 20px;overflow:hidden;">
         <ul class="nav nav-sidebar">
             <li class="active mySidebar dalei" id="appBar"
-                    style="padding-left: 20px;cursor: pointer;" onclick="clickFirstlevelBar('am/app/list');"><span><img
+                    style="padding-left: 20px;cursor: pointer;" onclick="clickFirstlevelBar('am/app/list?sCat=全部');"><span><img
                     src="images/iconfont-yingyong.png"
                     style="margin-top: -2px; margin-right: 17px;"></img></span>应用管理</li>
             <li class="mySidebar"><a href="" style="padding-left: 78px;">全部</a></li>
