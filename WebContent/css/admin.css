@@ -4,7 +4,6 @@
     margin-top: -1px;
 }
 
-/* table 里面输入框的样式 */
 .inputText {
     width: 75%;
     height: 34px;
@@ -28,4 +27,31 @@
     line-height: 50px;
     font-size: 20px;
     cursor: pointer;
+}
+
+
+.mistat-pagination a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.pageButton {
+	font-size: 12px;
+	padding: 4px 10px!important;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #e7e7e7;
+	border-right: none;
+	display: inline-block;
+	line-height: 16px;
+	background: #fff;
+	color: #333;
+}
+
+.pageNum {
+	background: #ff4a00!important;
+	color: #fff!important;
+	cursor: default!important;
+	border: 1px solid #ff4a00;
+	padding-right: 9px!important;
 }

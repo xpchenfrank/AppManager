@@ -51,7 +51,7 @@ public class AppDAOHBImpl extends HibernateDaoSupport implements AppDAO {
 
 	@Override
 	public List<App> findAllApp() {
-		List<App> apps = getHibernateTemplate().find("from App where App.deleted=false");
+		List<App> apps = getHibernateTemplate().find("from App as app left join app.cats as cat where app.deleted=false and cat.deleted=false");
 		return apps;
 	}
 
@@ -105,16 +105,60 @@ public class AppDAOHBImpl extends HibernateDaoSupport implements AppDAO {
 	public List<Tag> findTagsByNames(String[] tags) {
 		
 		List<String> tagList = new ArrayList<String> ();
-		tagList.add("�Ƽ�");
-		tagList.add("��Ʒ");
+		tagList.add("推荐");
+		tagList.add("精品");
 		
-		String[] testArray ={"��Ʒ", "�Ƽ�", "����"}; 
+		String[] testArray ={"推荐", "精品", "高富帅"}; 
 		
 		List<Tag> tagsList = getHibernateTemplate().find("from Tag tag where tag.deleted=false and tag.name in " + CXPUtils.toInClause(testArray) );
 		
 		return tagsList;
 		
 	}
+
+    @Override
+    public String getFindAllAppQuery(String orderByColumn, String order) {
+        String query = "from App as app left join app.cats as cat where app.deleted=false and cat.deleted=false";
+        query += " order by " + orderByColumn;
+        query += " " + order;
+        return null;
+    }
+
+    @Override
+    public List<App> findAllAppPage() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<App> findAppByCatPage(String catName, String orderByColumn,
+            String order, int offset, int length) {
+        
+        String query = "from App as app left join app.cats as cat where app.deleted=false and cat.deleted=false and cat.name=" + catName;
+        query += " order by " + orderByColumn;
+        query += " " + order;
+        
+        return (List<App>)getListForPage(query, offset, length);
+    }
+
+    public List getListForPage(final String hql, final int offset, final int length) {
+        try {
+            
+            List list = getHibernateTemplate().executeFind(new HibernateCallback(){
+
+                public Object doInHibernate(Session session)
+                        throws HibernateException, SQLException {
+                    List list2 = session.createQuery(hql)
+                            .setFirstResult(offset)
+                            .setMaxResults(length)
+                            .list();                    
+                    return list2;
+                }});
+            return list;
+        } catch (RuntimeException re) {
+            throw re;
+        }
+    }
 
 	
 }

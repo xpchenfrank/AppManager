@@ -3,6 +3,7 @@ package com.app.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -37,7 +38,6 @@ import com.google.gson.JsonObject;
 @RequestMapping("/app")
 public class AppController {
 
-    
     @Autowired
     ServletContext context;
     
@@ -52,6 +52,8 @@ public class AppController {
     
     @Autowired
     private GeneralService gService;
+    
+    public static final int PAGE_SIZE = 10;
     
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addApp(HttpServletRequest request, Model model) throws Exception {
@@ -201,20 +203,27 @@ public class AppController {
         String sCat = req.getParameter("sCat");
         
         if(sCat != null) {
-            String sCatUTF8 = CXPUtils.changeCharset(sCat, "UTF-8");
-            
             if(sCat.equals("全部")) {
-                System.out.println(11111);
-            }
-            
-            if(sCat.equals(CXPUtils.changeCharset("全部", "utf-8"))) {
                 apps = aAppDAO.findAllApp();
             } else {
-                apps = aAppDAO.findAppByCat(sCatUTF8);     
+                apps = aAppDAO.findAppByCat(sCat);     
             }
         }
         
         model.addAttribute("apps", apps);
+        
+        //处理分页
+        int totalResults = apps.size();
+        
+        BigDecimal b1 = new BigDecimal(totalResults);
+        BigDecimal b2 = new BigDecimal(PAGE_SIZE);
+        
+        int pageNums = Integer.valueOf((b1.divide(b2, BigDecimal.ROUND_UP)).toString());
+        
+        //分页查询
+        aAppDAO.findAppByCatPage("社交", "lastmodified", "desc", 0, PAGE_SIZE);
+        
+        //int 
         /*
         for(Category tempCat : cats) {
             System.out.println(tempCat.getName());

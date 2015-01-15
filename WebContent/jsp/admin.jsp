@@ -23,6 +23,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
+    <link href="css/admin.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -158,7 +159,7 @@
 		                <c:forEach items="${apps}" var="app" varStatus="obj">  
 						  <c:if test="${obj.count%2 == '0'}">  
 							  <tr >
-		                        <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
+		                        <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">${obj.count}</td>
 		                        <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
 		                            <span><img src="${app[0].iconPath}" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>${app[0].displayname}
 		                        </td>
@@ -185,7 +186,7 @@
 						  </c:if>  
 						  <c:if test="${obj.count%2 != '0'}">  
 							 <tr >
-		                        <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
+		                        <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">${obj.count}</td>
 		                        <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
 		                            <span><img src="${app[0].iconPath}" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>${app[0].displayname}
 		                        </td>
@@ -211,100 +212,37 @@
 		                      </tr>  
 						  </c:if>  
 						</c:forEach>
-	                  <tr >
-	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
-	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
-	                        <span><img src="images/app_xiongmao.png" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>功夫熊猫
-	                    </td>
-	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">社交</td>
-	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">1.0.9.3</td>
-	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">17 MB</td>
-	                    <td style="height:40px;line-height:40px;text-align:center;">
-		                     <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-		                         <img src="images/iconfont-xiugai.png"></img>
-		                     </a>
-		                     
-		                     &nbsp;&nbsp;&nbsp;
-		                     
-		                     <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-		                         <img src="images/iconfont-shanchu.png"></img>
-		                     </a>
-		                     
-		                     &nbsp;&nbsp;&nbsp;
-		                     <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-		                         <img src="images/iconfont-chaxuntongji.png"></img>
-		                     </a>
-	                    </td>
-	                  </tr>
-	                  <tr >
-	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">1</td>
-	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;">
-	                        <span><img src="images/app_xiongmao.png" style="width:40px;height:40px;line-height:40px;margin-right: 20px;"></img></span>功夫熊猫
-	                    </td>
-	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">社交</td>
-	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">1.0.9.3</td>
-	                    <td style="border-right: 1px solid #eee;height:40px;line-height:40px;text-align:center;">17 MB</td>
-	                    <td style="height:40px;line-height:40px;text-align:center;">
-	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-	                             <img src="images/iconfont-xiugai.png"></img>
-	                         </a>
-	                         
-	                         &nbsp;&nbsp;&nbsp;
-	                         
-	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-	                             <img src="images/iconfont-shanchu.png"></img>
-	                         </a>
-	                         
-	                         &nbsp;&nbsp;&nbsp;
-	                         <a class="event-detail" data-change-event-name="property&amp;test&amp;属性.0">
-	                             <img src="images/iconfont-chaxuntongji.png"></img>
-	                         </a>
-	                    </td>
-	                  </tr>
 	                </tbody>
 	              </table>
 	            </div>          
 	        </div>   <!--  table 的封装 -->
 	        
-	        <!-- 
-	        <div class="row">
-	          
-	          <div class="mistat-table-bottom"><div class="mistat-pagination"><div class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers" id="DataTables_Table_0_paginate"><a class="fg-button ui-button ui-state-default first ui-state-disabled" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" id="DataTables_Table_0_first">第一页</a><a class="fg-button ui-button ui-state-default previous ui-state-disabled" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0" id="DataTables_Table_0_previous">上一页</a><span><a class="fg-button ui-button ui-state-default ui-state-disabled"  style="background-color:#428bca;border:0px;" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0">1</a><a class="fg-button ui-button ui-state-default " aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0">2</a></span><a class="fg-button ui-button ui-state-default next" aria-controls="DataTables_Table_0" data-dt-idx="4" tabindex="0" id="DataTables_Table_0_next">下一页</a><a class="fg-button ui-button ui-state-default last" aria-controls="DataTables_Table_0" data-dt-idx="5" tabindex="0" id="DataTables_Table_0_last">最后一页</a></div></div></div>
-	          
-	        </div>
-	         -->
-	
-	          <!-- 
-	          <div class="row placeholders">
-	            <div class="col-xs-6 col-sm-3 placeholder">
-	              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="200x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzBEOEZEQiIvPjxnPjx0ZXh0IHg9Ijc1LjUiIHk9IjEwMCIgc3R5bGU9ImZpbGw6I0ZGRkZGRjtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjIwMHgyMDA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
-	              <h4>Label</h4>
-	              <span class="text-muted">Something else</span>
-	            </div>
-	            <div class="col-xs-6 col-sm-3 placeholder">
-	              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="200x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzM5REJBQyIvPjxnPjx0ZXh0IHg9Ijc1LjUiIHk9IjEwMCIgc3R5bGU9ImZpbGw6IzFFMjkyQztmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjIwMHgyMDA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
-	              <h4>Label</h4>
-	              <span class="text-muted">Something else</span>
-	            </div>
-	            <div class="col-xs-6 col-sm-3 placeholder">
-	              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="200x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzBEOEZEQiIvPjxnPjx0ZXh0IHg9Ijc1LjUiIHk9IjEwMCIgc3R5bGU9ImZpbGw6I0ZGRkZGRjtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjIwMHgyMDA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
-	              <h4>Label</h4>
-	              <span class="text-muted">Something else</span>
-	            </div>
-	            <div class="col-xs-6 col-sm-3 placeholder">
-	              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="200x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzM5REJBQyIvPjxnPjx0ZXh0IHg9Ijc1LjUiIHk9IjEwMCIgc3R5bGU9ImZpbGw6IzFFMjkyQztmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjIwMHgyMDA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
-	              <h4>Label</h4>
-	              <span class="text-muted">Something else</span>
-	            </div>
+	          <!-- 分页区域 -->
+		    <div class="row">
+				<div class="mistat-pagination" style="float: right;margin-right: 50px;">
+				    <div
+				        class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers">
+				            <a
+				            class="pageButton"
+				            id="DataTables_Table_0_first">首页</a>
+				            <!-- 
+				            <a class="pageButton"
+				            tabindex="0" id="DataTables_Table_0_previous">上一页</a>
+				             -->
+				            <span>
+					            <a class="pageButton pageNum">1</a>
+					            <a class="pageButton">2</a>
+				            </span>
+				            <!-- 
+				            <a class="pageButton"
+				            tabindex="0" id="DataTables_Table_0_next">下一页</a>
+				             -->
+				            <a class="pageButton"
+				            tabindex="0" id="DataTables_Table_0_last">尾页</a>
+				    </div>
+				</div>  
 	          </div>
-	
-	          <h2 class="sub-header">应用管理</h2>
-	           -->
-	          <div class="row">
-	            
-	          </div>
-	           
-	        </div>
+	       </div>
       </div>
     </div>
 

@@ -1,5 +1,6 @@
 package com.app.model;
 
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -67,6 +68,10 @@ public class App {
     
     @Column(name="filesize")
     private String fileSize;
+    
+    private Timestamp created;
+    
+    private Timestamp lastmodified;
     
     public App() {
         
@@ -158,6 +163,22 @@ public class App {
 
     public void setFileSize(String fileSize) {
         this.fileSize = fileSize;
+    }
+
+    public Timestamp getCreated() {
+        return created;
+    }
+
+    public void setCreated(Timestamp created) {
+        this.created = created;
+    }
+
+    public Timestamp getLastmodified() {
+        return lastmodified;
+    }
+
+    public void setLastmodified(Timestamp lastmodified) {
+        this.lastmodified = lastmodified;
     }
     
 }

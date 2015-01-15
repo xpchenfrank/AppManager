@@ -1,6 +1,7 @@
 package com.app.util;
 
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -51,14 +52,13 @@ public class CXPUtils {
     }
     
     public static void main(String[] args) throws UnsupportedEncodingException {
-        String str = "全部";
-        String strUTF = CXPUtils.changeCharset(str, "UTF-8");
+        int totalResults = 34;
+        //int pageNums = totalResults / 10 + 1;
         
-        if(strUTF.equals(CXPUtils.changeCharset("全部", "UTF-8"))) {
-            System.out.println("想等的");
-        } else {
-            System.out.println("不想等");
-        }
+        String query = "from App as app left join app.cats as cat where app.deleted=false and cat.deleted=false";
+        query += " order by " + "displayname";
+        query += " " + "desc";
+        System.out.println(query);
     }
     
 

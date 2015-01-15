@@ -9,9 +9,6 @@ import com.app.model.App;
 import com.app.model.Category;
 import com.app.model.Tag;
 
-/**
- *  APP DAO ͬʱ����� APP �� Category ��DAO ����
- */
 @Component
 public interface AppDAO {
     
@@ -21,12 +18,19 @@ public interface AppDAO {
     
     public List<App> findAppByCat (String catName);
     
+    public List<App> findAppByCatPage (String catName, String orderByColumn, String order, int offset, int length);
+    
+    public String getFindAllAppQuery (String orderByColumn, String order);
+    
     public List<App> findAllApp ();
+    
+    public List<App> findAllAppPage ();
     
     // Category Start
     public Category findCatByName(String catName);
     
     public Category upsertCat(String catName);
+    
     
     public Category upsertCat(String catName, Set<App> apps);
     
