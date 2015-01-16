@@ -18,6 +18,10 @@ public interface AppDAO {
     
     public List<App> findAppByCat (String catName);
     
+    public List<Object> findAppById (String appId);
+    
+    public List<App> findAppByIdSingle (String appId);
+    
     public List<App> findAppByCatPage (String catName, String orderByColumn, String order, int offset, int length);
     
     public String getFindAllAppQuery (String orderByColumn, String order);
@@ -25,6 +29,10 @@ public interface AppDAO {
     public List<App> findAllApp ();
     
     public List<App> findAllAppPage ();
+    
+    public List<App> findAllAppPage (String orderByColumn, String order, int offset, int length);
+    
+    public void deleteApp(String appId);
     
     // Category Start
     public Category findCatByName(String catName);

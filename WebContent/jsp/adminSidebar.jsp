@@ -4,9 +4,14 @@
 
     <script type="text/javascript">
     
-	    function clickFirstlevelBar(url) {
-	        window.location.href=url;
+	    function clickFirstlevelBar(url, value) {
+	    	//alert(encodeURI(url));
+	        window.location.href=url + encodeURIComponent(encodeURIComponent(value));
 	    }
+	    
+	    function clickSublevelBar(url, value) {
+	    	window.location.href=url + encodeURIComponent(encodeURIComponent(value));
+        }
 	    
 	    function selectBar(id) {
 	    	
@@ -28,9 +33,7 @@
         	  $("#userBar").html("网点管理");
           }
           
-          
         });
-	    
         
     </script>
 
@@ -38,17 +41,17 @@
         style="top: 49px; padding: 0px 20px 20px 20px;overflow:hidden;">
         <ul class="nav nav-sidebar">
             <li class="active mySidebar dalei" id="appBar"
-                    style="padding-left: 20px;cursor: pointer;" onclick="clickFirstlevelBar('am/app/list?sCat=全部');"><span><img
+                    style="padding-left: 20px;cursor: pointer;" onclick="clickFirstlevelBar('<%=basePath%>am/app/list?sCat=', '全部');"><span><img
                     src="images/iconfont-yingyong.png"
                     style="margin-top: -2px; margin-right: 17px;"></img></span>应用管理</li>
-            <li class="mySidebar"><a href="" style="padding-left: 78px;">全部</a></li>
-            <li class="mySidebar"><a href="" style="padding-left: 78px;">社交</a></li>
-            <li class="mySidebar"><a href="" style="padding-left: 78px;">视频</a></li>
-            <li class="mySidebar"><a href="" style="padding-left: 78px;">音乐</a></li>
-            <li class="mySidebar"><a href="" style="padding-left: 78px;">生活</a></li>
-            <li class="mySidebar"><a href="" style="padding-left: 78px;">阅读</a></li>
-            <li class="mySidebar"><a href="" style="padding-left: 78px;">系统</a></li>
-            <li class="mySidebar"><a href="" style="padding-left: 78px;">安全</a></li>
+            <li class="mySidebar"><a href="javascript:void(0);" style="padding-left: 78px;" onclick="clickSublevelBar('<%=basePath%>am/app/list?sCat=', '全部');">全部</a></li>
+            <li class="mySidebar"><a href="javascript:void(0);" style="padding-left: 78px;" onclick="clickSublevelBar('<%=basePath%>am/app/list?sCat=', '社交');">社交</a></li>
+            <li class="mySidebar"><a href="javascript:void(0);" style="padding-left: 78px;" onclick="clickSublevelBar('<%=basePath%>am/app/list?sCat=', '视频');">视频</a></li>
+            <li class="mySidebar"><a href="javascript:void(0);" style="padding-left: 78px;" onclick="clickSublevelBar('<%=basePath%>am/app/list?sCat=', '音乐');">音乐</a></li>
+            <li class="mySidebar"><a href="javascript:void(0);" style="padding-left: 78px;" onclick="clickSublevelBar('<%=basePath%>am/app/list?sCat=', '生活');">生活</a></li>
+            <li class="mySidebar"><a href="javascript:void(0);" style="padding-left: 78px;" onclick="clickSublevelBar('<%=basePath%>am/app/list?sCat=', '阅读');">阅读</a></li>
+            <li class="mySidebar"><a href="javascript:void(0);" style="padding-left: 78px;" onclick="clickSublevelBar('<%=basePath%>am/app/list?sCat=', '系统');">系统</a></li>
+            <li class="mySidebar"><a href="javascript:void(0);" style="padding-left: 78px;" onclick="clickSublevelBar('<%=basePath%>am/app/list?sCat=', '安全');">安全</a></li>
         </ul>
         <ul class="nav nav-sidebar">
             <li class="mySidebar dalei" style="olor: #428bca;"><a

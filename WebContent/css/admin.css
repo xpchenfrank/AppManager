@@ -55,3 +55,7 @@
 	border: 1px solid #ff4a00;
 	padding-right: 9px!important;
 }
+
+.optIcon {
+	cursor: pointer;
+}

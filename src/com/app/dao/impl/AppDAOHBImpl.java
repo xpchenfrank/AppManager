@@ -134,7 +134,7 @@ public class AppDAOHBImpl extends HibernateDaoSupport implements AppDAO {
     public List<App> findAppByCatPage(String catName, String orderByColumn,
             String order, int offset, int length) {
         
-        String query = "from App as app left join app.cats as cat where app.deleted=false and cat.deleted=false and cat.name=" + catName;
+        String query = "from App as app left join app.cats as cat where app.deleted=false and cat.deleted=false and cat.name='" + catName + "'";
         query += " order by " + orderByColumn;
         query += " " + order;
         
@@ -158,6 +158,41 @@ public class AppDAOHBImpl extends HibernateDaoSupport implements AppDAO {
         } catch (RuntimeException re) {
             throw re;
         }
+    }
+
+    @Override
+    public List<App> findAllAppPage(String orderByColumn, String order,
+            int offset, int length) {
+        
+        String query = "from App as app left join app.cats as cat where app.deleted=false and cat.deleted=false";
+        query += " order by " + orderByColumn;
+        query += " " + order;
+        
+        return (List<App>)getListForPage(query, offset, length);
+        
+    }
+
+
+    @Override
+    public void deleteApp(String appId) {
+        
+        List<App> appList = findAppByIdSingle(appId);
+        App deletedApp = appList.get(0);
+        deletedApp.setDeleted(true);
+        getHibernateTemplate().update(deletedApp);
+       // App currApp = appList.get(0).get(0);
+    }
+
+    @Override
+    public List<Object> findAppById(String appId) {
+        List<Object> results =  getHibernateTemplate().find("from App as app left join app.cats as cat where app.deleted=false and cat.deleted=false and app.id=?", Long.valueOf(appId));
+        return results;
+    }
+
+    @Override
+    public List<App> findAppByIdSingle(String appId) {
+        List<App> results =  getHibernateTemplate().find("from App as app where app.deleted=false and app.id=?", Long.valueOf(appId));
+        return results;
     }
 
 	
