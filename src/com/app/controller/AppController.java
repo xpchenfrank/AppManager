@@ -80,6 +80,8 @@ public class AppController {
         
         MultipartFile appIcon = fileMap.get("appIcon");
         MultipartFile appFile = fileMap.get("appFile");
+		
+		//just test
         
         App app = new App();
         app.setDisplayname(appDisplayName);
